@@ -1,0 +1,7 @@
+# Resend API Configuration
+# Get your API key from: https://resend.com/api-keys
+VITE_RESEND_API_KEY=re_your_api_key_here
+
+# Note: In production (Netlify), set this as an environment variable
+# The VITE_ prefix makes it available in the browser
+# Never commit your actual API key to version control

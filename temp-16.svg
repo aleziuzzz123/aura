@@ -1,0 +1,9 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with solid Heilen Beauty Spa color -->
+  <circle cx="8" cy="8" r="8" fill="#654529"/>
+  
+  <!-- Elegant "H" letter in white -->
+  <path d="M5 4 L5 12 L7 12 L7 9 L9 9 L9 12 L11 12 L11 4 L9 4 L9 7 L7 7 L7 4 Z" fill="white"/>
+</svg>
+
+
