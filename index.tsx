@@ -2939,83 +2939,9 @@ const showNewsletterMessage = (messageDiv: HTMLElement, message: string, type: '
         messageDiv.style.display = 'none';
     }, 5000);
 };
-                const errorText = await response.text();
-                console.error('❌ API Error Response:', {
-                    status: response.status,
-                    statusText: response.statusText,
-                    body: errorText
-                });
-                throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
-            }
 
-            const result = await response.json();
-            console.log('✅ Welcome email sent successfully:', result);
-            console.log('📧 Email ID:', result.id);
-            
-            // Store email in localStorage as backup
-        const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
-            if (!subscribers.find(sub => sub.email === email)) {
-            subscribers.push({
-                email: email,
-                subscribedAt: new Date().toISOString(),
-                    source: form.id === 'footer-newsletter-form' ? 'footer' : 'main',
-                    resendId: result.id,
-                    discountCode: 'DESCUENTO10'
-            });
-            localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
-        }
-        
-        // Show success message
-            showProfessionalSuccessNotification('¡Gracias! Te has suscrito exitosamente. Revisa tu email para tu bienvenida especial. 💅✨', 'success');
-        emailInput.value = '';
-        
-        // Track subscription in Google Analytics
-        if (typeof (window as any).gtag !== 'undefined') {
-            (window as any).gtag('event', 'newsletter_signup', {
-                event_category: 'engagement',
-                event_label: 'newsletter_subscription'
-            });
-            }
-            
-            // Still show success since we saved locally
-            showProfessionalSuccessNotification('¡Gracias! Te has suscrito exitosamente. Revisa tu email para tu bienvenida especial. 💅✨', 'success');
-            emailInput.value = '';
-            
-            // Track subscription in Google Analytics
-            if (typeof (window as any).gtag !== 'undefined') {
-                (window as any).gtag('event', 'newsletter_signup', {
-                    event_category: 'engagement',
-                    event_label: 'newsletter_subscription'
-                });
-            }
-        }
-    } catch (error) {
-        console.error('Newsletter signup error:', error);
-        showProfessionalSuccessNotification('Hubo un error al suscribirte. Por favor, inténtalo de nuevo.', 'error');
-    } finally {
-        // Reset button state
-        if (btnText && btnLoading) {
-            btnText.style.display = 'inline';
-            btnLoading.style.display = 'none';
-        }
-        submitBtn.disabled = false;
-    }
-};
-
-const showNewsletterMessage = (messageDiv: HTMLElement, message: string, type: 'success' | 'error') => {
-    if (!messageDiv) return;
-    
-    messageDiv.textContent = message;
-    messageDiv.className = `form-message ${type}`;
-    messageDiv.style.display = 'block';
-    
-    // Auto-hide after 5 seconds
-    setTimeout(() => {
-        messageDiv.style.display = 'none';
-    }, 5000);
-};
-
-// Send booking confirmation email
+// Send booking confirmation email - DUPLICATE REMOVED
+/*
 const sendBookingConfirmationEmail = async (bookingData: {
     name: string;
     email: string;
@@ -3104,6 +3030,7 @@ const sendBookingConfirmationEmail = async (bookingData: {
         throw error;
     }
 };
+*/
 
 // Make booking email function globally available
 (window as any).sendBookingConfirmationEmail = sendBookingConfirmationEmail;
