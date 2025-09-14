@@ -2852,82 +2852,112 @@ const handleNewsletterSignup = async (e: Event) => {
                     to: email,
                     subject: '🎉 ¡Bienvenida! Tu 10% de descuento te espera',
                     html: `
-                        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #fafafa;">
-                            <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <!DOCTYPE html>
+                        <html>
+                        <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>¡Bienvenida a Heilen Beauty Spa!</title>
+                        </head>
+                        <body style="margin: 0; padding: 0; background: linear-gradient(135deg, #f8f6f3 0%, #e8e2d9 100%); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                            <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
                                 
-                                <!-- Header -->
-                                <div style="background: linear-gradient(135deg, #a0816e, #8b6f47); padding: 30px; text-align: center;">
-                                    <img src="https://heilenbeautyspa.com/logo/HeilinBeautySpalogo.png" alt="Heilen Beauty Spa" style="max-width: 180px; height: auto; margin-bottom: 20px;">
-                                    <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 300;">¡Bienvenida a Heilen Beauty Spa!</h1>
-                                    <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">Tu oasis de belleza y bienestar</p>
-                                </div>
-                                
-                                <!-- Discount Card -->
-                                <div style="background: linear-gradient(135deg, #ff6b6b, #ee5a52); margin: -20px 20px 30px 20px; padding: 25px; border-radius: 15px; text-align: center; position: relative; z-index: 2;">
-                                    <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 15px;">
-                                        <h2 style="color: #ee5a52; margin: 0 0 10px 0; font-size: 24px;">🎁 ¡Tu 10% de descuento especial!</h2>
-                                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                                            <p style="margin: 0; color: #666; font-size: 14px;">Código de descuento:</p>
-                                            <p style="margin: 5px 0 0 0; font-size: 20px; font-weight: bold; color: #ee5a52; letter-spacing: 2px;">DESCUENTO10</p>
+                                <!-- Main Card -->
+                                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(160, 129, 110, 0.15); border: 1px solid rgba(160, 129, 110, 0.1);">
+                                    
+                                    <!-- Header with Logo -->
+                                    <div style="background: linear-gradient(135deg, #a0816e 0%, #8b6f47 100%); padding: 40px 30px; text-align: center; position: relative;">
+                                        <div style="background: rgba(255,255,255,0.1); border-radius: 50%; width: 120px; height: 120px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border: 3px solid rgba(255,255,255,0.2);">
+                                            <span style="color: white; font-size: 48px; font-weight: bold;">H</span>
                                         </div>
-                                        <p style="margin: 0; color: #666; font-size: 14px;">Válido para tu primera visita</p>
+                                        <h1 style="color: white; margin: 0; font-size: 32px; font-weight: 300; letter-spacing: 1px;">¡Bienvenida a Heilen Beauty Spa!</h1>
+                                        <p style="color: rgba(255,255,255,0.9); margin: 15px 0 0 0; font-size: 18px; font-weight: 300;">Tu oasis de belleza y bienestar en Cancún</p>
                                     </div>
-                                </div>
-                                
-                                <!-- Content -->
-                                <div style="padding: 0 30px 30px 30px;">
-                                    <p style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
-                                        ¡Hola! 👋<br><br>
-                                        Gracias por suscribirte a nuestro newsletter. Como agradecimiento, te regalamos un <strong>10% de descuento</strong> en tu primera visita.
-                                    </p>
                                     
-                                    <p style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
-                                        Además, ahora recibirás:
-                                    </p>
+                                    <!-- Welcome Message -->
+                                    <div style="padding: 40px 30px 30px; text-align: center; background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 100%);">
+                                        <h2 style="color: #a0816e; margin: 0 0 20px 0; font-size: 24px; font-weight: 400;">¡Gracias por unirte a nuestra comunidad!</h2>
+                                        <p style="font-size: 16px; line-height: 1.6; color: #666; margin: 0 0 30px 0;">
+                                            Como agradecimiento por confiar en nosotros, te regalamos un <strong style="color: #a0816e;">10% de descuento</strong> en tu primera visita.
+                                        </p>
+                                        
+                                        <!-- Discount Code Card -->
+                                        <div style="background: linear-gradient(135deg, #d4af8c 0%, #c9a876 100%); padding: 25px; border-radius: 15px; margin: 30px 0; box-shadow: 0 10px 25px rgba(212, 175, 140, 0.3);">
+                                            <h3 style="color: white; margin: 0 0 15px 0; font-size: 20px; font-weight: 500;">🎁 Tu código de descuento especial</h3>
+                                            <div style="background: white; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                                                <p style="margin: 0 0 10px 0; color: #666; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Código de descuento</p>
+                                                <p style="margin: 0; font-size: 28px; font-weight: bold; color: #a0816e; letter-spacing: 3px; font-family: 'Courier New', monospace;">DESCUENTO10</p>
+                                            </div>
+                                            <p style="margin: 15px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px;">Válido para tu primera visita</p>
+                                        </div>
+                                    </div>
                                     
-                                    <ul style="color: #333; line-height: 1.8; margin-bottom: 30px;">
-                                        <li>🎁 <strong>Promociones exclusivas</strong> solo para suscriptores</li>
-                                        <li>💡 <strong>Consejos de expertos</strong> para el cuidado de tu piel</li>
-                                        <li>✨ <strong>Noticias sobre nuevos tratamientos</strong> y tecnología</li>
-                                        <li>📅 <strong>Ofertas especiales</strong> en fechas importantes</li>
-                                    </ul>
+                                    <!-- Benefits Section -->
+                                    <div style="padding: 0 30px 30px;">
+                                        <h3 style="color: #a0816e; margin: 0 0 20px 0; font-size: 20px; text-align: center; font-weight: 400;">Lo que recibirás como miembro</h3>
+                                        
+                                        <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
+                                            <div style="flex: 1; min-width: 250px; background: #f8f6f3; padding: 20px; border-radius: 12px; text-align: center; border-left: 4px solid #a0816e;">
+                                                <div style="font-size: 32px; margin-bottom: 10px;">🎁</div>
+                                                <h4 style="color: #a0816e; margin: 0 0 10px 0; font-size: 16px;">Promociones Exclusivas</h4>
+                                                <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.4;">Ofertas especiales solo para suscriptores</p>
+                                            </div>
+                                            
+                                            <div style="flex: 1; min-width: 250px; background: #f8f6f3; padding: 20px; border-radius: 12px; text-align: center; border-left: 4px solid #a0816e;">
+                                                <div style="font-size: 32px; margin-bottom: 10px;">💡</div>
+                                                <h4 style="color: #a0816e; margin: 0 0 10px 0; font-size: 16px;">Consejos Expertos</h4>
+                                                <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.4;">Tips profesionales para el cuidado de tu piel</p>
+                                            </div>
+                                            
+                                            <div style="flex: 1; min-width: 250px; background: #f8f6f3; padding: 20px; border-radius: 12px; text-align: center; border-left: 4px solid #a0816e;">
+                                                <div style="font-size: 32px; margin-bottom: 10px;">✨</div>
+                                                <h4 style="color: #a0816e; margin: 0 0 10px 0; font-size: 16px;">Nuevos Tratamientos</h4>
+                                                <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.4;">Primera información sobre tecnología de vanguardia</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                     
                                     <!-- CTA Buttons -->
-                                    <div style="text-align: center; margin: 30px 0;">
-                                        <a href="https://wa.me/529982322090?text=¡Hola!%20Me%20suscribí%20al%20newsletter%20y%20quiero%20usar%20mi%20descuento.%20¿Podrían%20ayudarme%20a%20agendar%20mi%20cita?%20Gracias!" 
-                                           style="background: #25D366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 0 10px 10px 10px; font-size: 16px;">
+                                    <div style="text-align: center; padding: 0 30px 40px;">
+                                        <a href="https://wa.me/529982322090?text=¡Hola!%20Me%20suscribí%20al%20newsletter%20y%20quiero%20usar%20mi%20descuento%20DESCUENTO10.%20¿Podrían%20ayudarme%20a%20agendar%20mi%20cita?%20Gracias!" 
+                                           style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: white; padding: 18px 35px; text-decoration: none; border-radius: 30px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; font-size: 16px; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); transition: all 0.3s ease;">
                                             💬 Reservar con Descuento
                                         </a>
                                         <br>
                                         <a href="https://heilenbeautyspa.com/#reservar-cita" 
-                                           style="background: #a0816e; color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 10px; font-size: 14px;">
+                                           style="background: linear-gradient(135deg, #a0816e 0%, #8b6f47 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 30px; font-weight: 600; display: inline-block; margin: 10px; font-size: 14px; box-shadow: 0 6px 15px rgba(160, 129, 110, 0.3);">
                                             🌐 Ver Nuestros Servicios
                                         </a>
                                     </div>
                                     
                                     <!-- Location Info -->
-                                    <div style="background: #f8f6f3; padding: 20px; border-radius: 10px; margin: 20px 0;">
-                                        <h4 style="color: #a0816e; margin-top: 0; text-align: center;">📍 Nuestra Ubicación</h4>
-                                        <p style="margin: 5px 0; text-align: center;"><strong>Plaza Aura, Cancún</strong></p>
-                                        <p style="margin: 5px 0; text-align: center; font-size: 14px; color: #666;">Subiendo el elevador del lado derecho, tercer nivel</p>
-                                        <p style="margin: 5px 0; text-align: center;">📞 (998) 232-2090</p>
-                                        <p style="margin: 5px 0; text-align: center;">🕒 Lun-Sáb: 10:00 AM - 6:00 PM</p>
+                                    <div style="background: linear-gradient(135deg, #f8f6f3 0%, #f0ede7 100%); padding: 30px; margin: 0; border-top: 1px solid rgba(160, 129, 110, 0.1);">
+                                        <h4 style="color: #a0816e; margin: 0 0 20px 0; text-align: center; font-size: 18px; font-weight: 500;">📍 Nuestra Ubicación</h4>
+                                        <div style="text-align: center;">
+                                            <p style="margin: 8px 0; color: #333; font-size: 16px; font-weight: 600;">Plaza Aura, Cancún</p>
+                                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Subiendo el elevador del lado derecho, tercer nivel</p>
+                                            <p style="margin: 8px 0; color: #a0816e; font-size: 16px; font-weight: 500;">📞 (998) 232-2090</p>
+                                            <p style="margin: 8px 0; color: #666; font-size: 14px;">🕒 Lun-Sáb: 10:00 AM - 6:00 PM</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Footer -->
+                                    <div style="background: #2c2c2c; padding: 25px; text-align: center;">
+                                        <p style="font-size: 14px; color: #ccc; margin: 0 0 10px 0;">
+                                            <strong style="color: #a0816e;">Heilen Beauty Spa</strong><br>
+                                            Cancún, Quintana Roo, México
+                                        </p>
+                                        <p style="margin: 0 0 15px 0;">
+                                            <a href="https://heilenbeautyspa.com" style="color: #a0816e; text-decoration: none; font-size: 14px;">heilenbeautyspa.com</a>
+                                        </p>
+                                        <p style="font-size: 12px; color: #999; margin: 0;">
+                                            Si no deseas recibir más emails, puedes <a href="#" style="color: #999; text-decoration: underline;">darte de baja aquí</a>
+                                        </p>
                                     </div>
                                 </div>
-                                
-                                <!-- Footer -->
-                                <div style="background: #f8f9fa; padding: 20px; text-align: center; border-top: 1px solid #eee;">
-                                    <p style="font-size: 14px; color: #666; margin: 0;">
-                                        <strong>Heilen Beauty Spa</strong><br>
-                                        Cancún, Quintana Roo<br>
-                                        <a href="https://heilenbeautyspa.com" style="color: #a0816e;">heilenbeautyspa.com</a>
-                                    </p>
-                                    <p style="font-size: 12px; color: #999; margin: 15px 0 0 0;">
-                                        Si no deseas recibir más emails, puedes <a href="#" style="color: #999;">darte de baja aquí</a>
-                                    </p>
-                                </div>
                             </div>
-                        </div>
+                        </body>
+                        </html>
                     `,
                     from: 'Heilen Beauty Spa <mail@heilenbeautyspa.com>'
                 })
@@ -2989,68 +3019,126 @@ const sendBookingConfirmationEmail = async (bookingData: {
                 to: bookingData.email,
                 subject: `Confirmación de cita - ${bookingData.service} 💅`,
                 html: `
-                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #fafafa;">
-                        <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Confirmación de Cita - Heilen Beauty Spa</title>
+                    </head>
+                    <body style="margin: 0; padding: 0; background: linear-gradient(135deg, #f8f6f3 0%, #e8e2d9 100%); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
                             
-                            <!-- Header -->
-                            <div style="background: linear-gradient(135deg, #a0816e, #8b6f47); padding: 30px; text-align: center;">
-                                <img src="https://heilenbeautyspa.com/logo/HeilinBeautySpalogo.png" alt="Heilen Beauty Spa" style="max-width: 180px; height: auto; margin-bottom: 20px;">
-                                <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 300;">¡Cita Confirmada!</h1>
-                                <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">Tu reserva ha sido procesada exitosamente</p>
-                            </div>
-                            
-                            <!-- Booking Details -->
-                            <div style="padding: 30px;">
-                                <h2 style="color: #a0816e; margin-top: 0; text-align: center;">Detalles de tu cita</h2>
+                            <!-- Main Card -->
+                            <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(160, 129, 110, 0.15); border: 1px solid rgba(160, 129, 110, 0.1);">
                                 
-                                <div style="background: #f8f6f3; padding: 20px; border-radius: 10px; margin: 20px 0;">
-                                    <h3 style="color: #a0816e; margin-top: 0;">📋 Información del servicio</h3>
-                                    <p><strong>Nombre:</strong> ${bookingData.name}</p>
-                                    <p><strong>Email:</strong> ${bookingData.email}</p>
-                                    <p><strong>Teléfono:</strong> ${bookingData.phone}</p>
-                                    <p><strong>Servicio:</strong> ${bookingData.service}</p>
-                                    <p><strong>Fecha:</strong> ${bookingData.date}</p>
-                                    <p><strong>Hora:</strong> ${bookingData.time}</p>
+                                <!-- Header with Logo -->
+                                <div style="background: linear-gradient(135deg, #a0816e 0%, #8b6f47 100%); padding: 40px 30px; text-align: center; position: relative;">
+                                    <div style="background: rgba(255,255,255,0.1); border-radius: 50%; width: 120px; height: 120px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border: 3px solid rgba(255,255,255,0.2);">
+                                        <span style="color: white; font-size: 48px; font-weight: bold;">H</span>
+                                    </div>
+                                    <h1 style="color: white; margin: 0; font-size: 32px; font-weight: 300; letter-spacing: 1px;">¡Cita Confirmada!</h1>
+                                    <p style="color: rgba(255,255,255,0.9); margin: 15px 0 0 0; font-size: 18px; font-weight: 300;">Tu reserva ha sido procesada exitosamente</p>
                                 </div>
                                 
-                                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #4caf50;">
-                                    <h3 style="color: #2e7d32; margin-top: 0;">✅ ¿Qué sigue?</h3>
-                                    <ul style="color: #2e7d32; line-height: 1.6;">
-                                        <li>Recibirás una llamada de confirmación 24 horas antes</li>
-                                        <li>Llega 10 minutos antes de tu cita</li>
-                                        <li>Trae una identificación oficial</li>
-                                        <li>Si necesitas cancelar, hazlo con 24 horas de anticipación</li>
-                                    </ul>
+                                <!-- Success Message -->
+                                <div style="padding: 40px 30px 30px; text-align: center; background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 100%);">
+                                    <div style="background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); padding: 20px; border-radius: 15px; margin: 0 0 30px 0; box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);">
+                                        <h2 style="color: white; margin: 0; font-size: 24px; font-weight: 500;">✅ ¡Reserva Exitosa!</h2>
+                                        <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">Tu cita ha sido confirmada y te esperamos</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Booking Details -->
+                                <div style="padding: 0 30px 30px;">
+                                    <h3 style="color: #a0816e; margin: 0 0 25px 0; font-size: 22px; text-align: center; font-weight: 500;">Detalles de tu cita</h3>
+                                    
+                                    <div style="background: #f8f6f3; padding: 30px; border-radius: 15px; margin: 0 0 25px 0; border-left: 5px solid #a0816e;">
+                                        <h4 style="color: #a0816e; margin: 0 0 20px 0; font-size: 18px; font-weight: 500;">📋 Información del servicio</h4>
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                            <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                                <p style="margin: 0 0 5px 0; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Nombre</p>
+                                                <p style="margin: 0; color: #333; font-size: 16px; font-weight: 600;">${bookingData.name}</p>
+                                            </div>
+                                            <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                                <p style="margin: 0 0 5px 0; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Teléfono</p>
+                                                <p style="margin: 0; color: #333; font-size: 16px; font-weight: 600;">${bookingData.phone}</p>
+                                            </div>
+                                            <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                                <p style="margin: 0 0 5px 0; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Servicio</p>
+                                                <p style="margin: 0; color: #333; font-size: 16px; font-weight: 600;">${bookingData.service}</p>
+                                            </div>
+                                            <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                                <p style="margin: 0 0 5px 0; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Fecha</p>
+                                                <p style="margin: 0; color: #333; font-size: 16px; font-weight: 600;">${bookingData.date}</p>
+                                            </div>
+                                            <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                                <p style="margin: 0 0 5px 0; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Hora</p>
+                                                <p style="margin: 0; color: #333; font-size: 16px; font-weight: 600;">${bookingData.time}</p>
+                                            </div>
+                                            <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                                <p style="margin: 0 0 5px 0; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Email</p>
+                                                <p style="margin: 0; color: #333; font-size: 16px; font-weight: 600;">${bookingData.email}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Next Steps -->
+                                    <div style="background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%); padding: 25px; border-radius: 15px; margin: 25px 0; border-left: 5px solid #4caf50;">
+                                        <h4 style="color: #2e7d32; margin: 0 0 20px 0; font-size: 18px; font-weight: 500;">✅ ¿Qué sigue?</h4>
+                                        <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                                            <div style="flex: 1; min-width: 200px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                                <div style="font-size: 24px; margin-bottom: 8px;">📞</div>
+                                                <p style="margin: 0; color: #2e7d32; font-size: 14px; font-weight: 500;">Confirmación telefónica 24h antes</p>
+                                            </div>
+                                            <div style="flex: 1; min-width: 200px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                                <div style="font-size: 24px; margin-bottom: 8px;">⏰</div>
+                                                <p style="margin: 0; color: #2e7d32; font-size: 14px; font-weight: 500;">Llega 10 minutos antes</p>
+                                            </div>
+                                            <div style="flex: 1; min-width: 200px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                                <div style="font-size: 24px; margin-bottom: 8px;">🆔</div>
+                                                <p style="margin: 0; color: #2e7d32; font-size: 14px; font-weight: 500;">Trae identificación oficial</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                                 <!-- CTA Buttons -->
-                                <div style="text-align: center; margin: 30px 0;">
+                                <div style="text-align: center; padding: 0 30px 40px;">
                                     <a href="https://wa.me/529982322090?text=Hola!%20Tengo%20una%20cita%20confirmada%20para%20${encodeURIComponent(bookingData.service)}%20el%20${bookingData.date}%20a%20las%20${bookingData.time}.%20¿Hay%20algo%20que%20deba%20saber?" 
-                                       style="background: #25D366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 0 10px 10px 10px; font-size: 16px;">
+                                       style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: white; padding: 18px 35px; text-decoration: none; border-radius: 30px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; font-size: 16px; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);">
                                         💬 Contactar por WhatsApp
                                     </a>
                                 </div>
                                 
                                 <!-- Location Info -->
-                                <div style="background: #f8f6f3; padding: 20px; border-radius: 10px; margin: 20px 0;">
-                                    <h4 style="color: #a0816e; margin-top: 0; text-align: center;">📍 Nuestra Ubicación</h4>
-                                    <p style="margin: 5px 0; text-align: center;"><strong>Plaza Aura, Cancún</strong></p>
-                                    <p style="margin: 5px 0; text-align: center; font-size: 14px; color: #666;">Subiendo el elevador del lado derecho, tercer nivel</p>
-                                    <p style="margin: 5px 0; text-align: center;">📞 (998) 232-2090</p>
-                                    <p style="margin: 5px 0; text-align: center;">🕒 Lun-Sáb: 10:00 AM - 6:00 PM</p>
+                                <div style="background: linear-gradient(135deg, #f8f6f3 0%, #f0ede7 100%); padding: 30px; margin: 0; border-top: 1px solid rgba(160, 129, 110, 0.1);">
+                                    <h4 style="color: #a0816e; margin: 0 0 20px 0; text-align: center; font-size: 18px; font-weight: 500;">📍 Nuestra Ubicación</h4>
+                                    <div style="text-align: center;">
+                                        <p style="margin: 8px 0; color: #333; font-size: 16px; font-weight: 600;">Plaza Aura, Cancún</p>
+                                        <p style="margin: 8px 0; color: #666; font-size: 14px;">Subiendo el elevador del lado derecho, tercer nivel</p>
+                                        <p style="margin: 8px 0; color: #a0816e; font-size: 16px; font-weight: 500;">📞 (998) 232-2090</p>
+                                        <p style="margin: 8px 0; color: #666; font-size: 14px;">🕒 Lun-Sáb: 10:00 AM - 6:00 PM</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Footer -->
+                                <div style="background: #2c2c2c; padding: 25px; text-align: center;">
+                                    <p style="font-size: 14px; color: #ccc; margin: 0 0 10px 0;">
+                                        <strong style="color: #a0816e;">Heilen Beauty Spa</strong><br>
+                                        Cancún, Quintana Roo, México
+                                    </p>
+                                    <p style="margin: 0 0 15px 0;">
+                                        <a href="https://heilenbeautyspa.com" style="color: #a0816e; text-decoration: none; font-size: 14px;">heilenbeautyspa.com</a>
+                                    </p>
+                                    <p style="font-size: 12px; color: #999; margin: 0;">
+                                        Si necesitas cancelar tu cita, contáctanos con 24 horas de anticipación
+                                    </p>
                                 </div>
                             </div>
-                            
-                            <!-- Footer -->
-                            <div style="background: #f8f9fa; padding: 20px; text-align: center; border-top: 1px solid #eee;">
-                                <p style="font-size: 14px; color: #666; margin: 0;">
-                                    <strong>Heilen Beauty Spa</strong><br>
-                                    Cancún, Quintana Roo<br>
-                                    <a href="https://heilenbeautyspa.com" style="color: #a0816e;">heilenbeautyspa.com</a>
-                                </p>
-                            </div>
                         </div>
-                    </div>
+                    </body>
+                    </html>
                 `,
                 from: 'Heilen Beauty Spa <mail@heilenbeautyspa.com>'
             })
