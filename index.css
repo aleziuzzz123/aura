@@ -1218,6 +1218,19 @@ nav ul li a:hover {
     padding: 1rem 2rem;
     font-size: 1.1rem;
     font-weight: 600;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.whatsapp-btn:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
 /* Mobile Responsive */
