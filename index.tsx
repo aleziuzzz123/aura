@@ -844,9 +844,35 @@ const createServicesSection = () => {
                 }
             });
         });
+
+        // Handle VER DETALLES buttons - show modal
+        const verDetallesButtons = section.querySelectorAll('.service-details-btn');
+        console.log(`🔍 Found ${verDetallesButtons.length} VER DETALLES buttons`);
+        verDetallesButtons.forEach((button, index) => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('🎯 Service VER DETALLES clicked', index);
+                
+                // Get the service data
+                const serviceIndex = parseInt(button.getAttribute('data-service') || '0');
+                console.log('Service index:', serviceIndex);
+                const servicesData = (window as any).servicesData;
+                console.log('Services data:', servicesData);
+                
+                if (servicesData && servicesData[serviceIndex]) {
+                    console.log('Calling showServiceModal with:', servicesData[serviceIndex]);
+                    showServiceModal(servicesData[serviceIndex]);
+                } else {
+                    console.log('❌ Service data not found for index:', serviceIndex);
+                    console.log('Available services:', servicesData);
+                }
+            });
+        });
         
         console.log(`✅ Added ${reservarButtons.length} Reservar button handlers`);
         console.log(`✅ Added ${masInfoButtons.length} Más Info button handlers`);
+        console.log(`✅ Added ${verDetallesButtons.length} VER DETALLES button handlers`);
     }, 100);
     
     // Make services data globally accessible
