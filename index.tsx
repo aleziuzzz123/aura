@@ -822,6 +822,7 @@ const createServicesSection = () => {
 
         // Handle Más Info buttons - show modal instead of scrolling
         const masInfoButtons = section.querySelectorAll('.service-info-btn');
+        console.log(`🔍 Found ${masInfoButtons.length} Más Info buttons`);
         masInfoButtons.forEach((button, index) => {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -839,6 +840,7 @@ const createServicesSection = () => {
                     showServiceModal(servicesData[serviceIndex]);
                 } else {
                     console.log('❌ Service data not found for index:', serviceIndex);
+                    console.log('Available services:', servicesData);
                 }
             });
         });
