@@ -2849,8 +2849,87 @@ const handleNewsletterSignup = async (e: Event) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    email: email,
-                    type: 'newsletter'
+                    to: email,
+                    subject: '🎉 ¡Bienvenida! Tu 10% de descuento te espera',
+                    html: `
+                        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #fafafa;">
+                            <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                                
+                                <!-- Header -->
+                                <div style="background: linear-gradient(135deg, #a0816e, #8b6f47); padding: 30px; text-align: center;">
+                                    <img src="https://heilenbeautyspa.com/logo/HeilinBeautySpalogo.png" alt="Heilen Beauty Spa" style="max-width: 180px; height: auto; margin-bottom: 20px;">
+                                    <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 300;">¡Bienvenida a Heilen Beauty Spa!</h1>
+                                    <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">Tu oasis de belleza y bienestar</p>
+                                </div>
+                                
+                                <!-- Discount Card -->
+                                <div style="background: linear-gradient(135deg, #ff6b6b, #ee5a52); margin: -20px 20px 30px 20px; padding: 25px; border-radius: 15px; text-align: center; position: relative; z-index: 2;">
+                                    <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 15px;">
+                                        <h2 style="color: #ee5a52; margin: 0 0 10px 0; font-size: 24px;">🎁 ¡Tu 10% de descuento especial!</h2>
+                                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                                            <p style="margin: 0; color: #666; font-size: 14px;">Código de descuento:</p>
+                                            <p style="margin: 5px 0 0 0; font-size: 20px; font-weight: bold; color: #ee5a52; letter-spacing: 2px;">DESCUENTO10</p>
+                                        </div>
+                                        <p style="margin: 0; color: #666; font-size: 14px;">Válido para tu primera visita</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Content -->
+                                <div style="padding: 0 30px 30px 30px;">
+                                    <p style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
+                                        ¡Hola! 👋<br><br>
+                                        Gracias por suscribirte a nuestro newsletter. Como agradecimiento, te regalamos un <strong>10% de descuento</strong> en tu primera visita.
+                                    </p>
+                                    
+                                    <p style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
+                                        Además, ahora recibirás:
+                                    </p>
+                                    
+                                    <ul style="color: #333; line-height: 1.8; margin-bottom: 30px;">
+                                        <li>🎁 <strong>Promociones exclusivas</strong> solo para suscriptores</li>
+                                        <li>💡 <strong>Consejos de expertos</strong> para el cuidado de tu piel</li>
+                                        <li>✨ <strong>Noticias sobre nuevos tratamientos</strong> y tecnología</li>
+                                        <li>📅 <strong>Ofertas especiales</strong> en fechas importantes</li>
+                                    </ul>
+                                    
+                                    <!-- CTA Buttons -->
+                                    <div style="text-align: center; margin: 30px 0;">
+                                        <a href="https://wa.me/529982322090?text=¡Hola!%20Me%20suscribí%20al%20newsletter%20y%20quiero%20usar%20mi%20descuento.%20¿Podrían%20ayudarme%20a%20agendar%20mi%20cita?%20Gracias!" 
+                                           style="background: #25D366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 0 10px 10px 10px; font-size: 16px;">
+                                            💬 Reservar con Descuento
+                                        </a>
+                                        <br>
+                                        <a href="https://heilenbeautyspa.com/#reservar-cita" 
+                                           style="background: #a0816e; color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 10px; font-size: 14px;">
+                                            🌐 Ver Nuestros Servicios
+                                        </a>
+                                    </div>
+                                    
+                                    <!-- Location Info -->
+                                    <div style="background: #f8f6f3; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                                        <h4 style="color: #a0816e; margin-top: 0; text-align: center;">📍 Nuestra Ubicación</h4>
+                                        <p style="margin: 5px 0; text-align: center;"><strong>Plaza Aura, Cancún</strong></p>
+                                        <p style="margin: 5px 0; text-align: center; font-size: 14px; color: #666;">Subiendo el elevador del lado derecho, tercer nivel</p>
+                                        <p style="margin: 5px 0; text-align: center;">📞 (998) 232-2090</p>
+                                        <p style="margin: 5px 0; text-align: center;">🕒 Lun-Sáb: 10:00 AM - 6:00 PM</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Footer -->
+                                <div style="background: #f8f9fa; padding: 20px; text-align: center; border-top: 1px solid #eee;">
+                                    <p style="font-size: 14px; color: #666; margin: 0;">
+                                        <strong>Heilen Beauty Spa</strong><br>
+                                        Cancún, Quintana Roo<br>
+                                        <a href="https://heilenbeautyspa.com" style="color: #a0816e;">heilenbeautyspa.com</a>
+                                    </p>
+                                    <p style="font-size: 12px; color: #999; margin: 15px 0 0 0;">
+                                        Si no deseas recibir más emails, puedes <a href="#" style="color: #999;">darte de baja aquí</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+                    from: 'Heilen Beauty Spa <mail@heilenbeautyspa.com>'
                 })
             });
             
@@ -2907,9 +2986,73 @@ const sendBookingConfirmationEmail = async (bookingData: {
                     'Content-Type': 'application/json',
                 },
             body: JSON.stringify({
-                email: bookingData.email,
-                type: 'booking',
-                bookingData: bookingData
+                to: bookingData.email,
+                subject: `Confirmación de cita - ${bookingData.service} 💅`,
+                html: `
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #fafafa;">
+                        <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            
+                            <!-- Header -->
+                            <div style="background: linear-gradient(135deg, #a0816e, #8b6f47); padding: 30px; text-align: center;">
+                                <img src="https://heilenbeautyspa.com/logo/HeilinBeautySpalogo.png" alt="Heilen Beauty Spa" style="max-width: 180px; height: auto; margin-bottom: 20px;">
+                                <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 300;">¡Cita Confirmada!</h1>
+                                <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">Tu reserva ha sido procesada exitosamente</p>
+                            </div>
+                            
+                            <!-- Booking Details -->
+                            <div style="padding: 30px;">
+                                <h2 style="color: #a0816e; margin-top: 0; text-align: center;">Detalles de tu cita</h2>
+                                
+                                <div style="background: #f8f6f3; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                                    <h3 style="color: #a0816e; margin-top: 0;">📋 Información del servicio</h3>
+                                    <p><strong>Nombre:</strong> ${bookingData.name}</p>
+                                    <p><strong>Email:</strong> ${bookingData.email}</p>
+                                    <p><strong>Teléfono:</strong> ${bookingData.phone}</p>
+                                    <p><strong>Servicio:</strong> ${bookingData.service}</p>
+                                    <p><strong>Fecha:</strong> ${bookingData.date}</p>
+                                    <p><strong>Hora:</strong> ${bookingData.time}</p>
+                                </div>
+                                
+                                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #4caf50;">
+                                    <h3 style="color: #2e7d32; margin-top: 0;">✅ ¿Qué sigue?</h3>
+                                    <ul style="color: #2e7d32; line-height: 1.6;">
+                                        <li>Recibirás una llamada de confirmación 24 horas antes</li>
+                                        <li>Llega 10 minutos antes de tu cita</li>
+                                        <li>Trae una identificación oficial</li>
+                                        <li>Si necesitas cancelar, hazlo con 24 horas de anticipación</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- CTA Buttons -->
+                                <div style="text-align: center; margin: 30px 0;">
+                                    <a href="https://wa.me/529982322090?text=Hola!%20Tengo%20una%20cita%20confirmada%20para%20${encodeURIComponent(bookingData.service)}%20el%20${bookingData.date}%20a%20las%20${bookingData.time}.%20¿Hay%20algo%20que%20deba%20saber?" 
+                                       style="background: #25D366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 0 10px 10px 10px; font-size: 16px;">
+                                        💬 Contactar por WhatsApp
+                                    </a>
+                                </div>
+                                
+                                <!-- Location Info -->
+                                <div style="background: #f8f6f3; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                                    <h4 style="color: #a0816e; margin-top: 0; text-align: center;">📍 Nuestra Ubicación</h4>
+                                    <p style="margin: 5px 0; text-align: center;"><strong>Plaza Aura, Cancún</strong></p>
+                                    <p style="margin: 5px 0; text-align: center; font-size: 14px; color: #666;">Subiendo el elevador del lado derecho, tercer nivel</p>
+                                    <p style="margin: 5px 0; text-align: center;">📞 (998) 232-2090</p>
+                                    <p style="margin: 5px 0; text-align: center;">🕒 Lun-Sáb: 10:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Footer -->
+                            <div style="background: #f8f9fa; padding: 20px; text-align: center; border-top: 1px solid #eee;">
+                                <p style="font-size: 14px; color: #666; margin: 0;">
+                                    <strong>Heilen Beauty Spa</strong><br>
+                                    Cancún, Quintana Roo<br>
+                                    <a href="https://heilenbeautyspa.com" style="color: #a0816e;">heilenbeautyspa.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                from: 'Heilen Beauty Spa <mail@heilenbeautyspa.com>'
             })
         });
         
