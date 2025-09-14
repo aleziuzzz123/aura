@@ -46,7 +46,7 @@ exports.handler = async (event, context) => {
       };
     }
 
-    const { to, subject, html, from } = JSON.parse(event.body);
+    const { to, subject, html, from, addToAudience } = JSON.parse(event.body);
 
     if (!to || !subject || !html) {
       return {
@@ -56,6 +56,21 @@ exports.handler = async (event, context) => {
         },
         body: JSON.stringify({ error: 'Missing required fields' }),
       };
+    }
+
+    // Add to audience if requested (for newsletter signups)
+    if (addToAudience && to) {
+      try {
+        console.log('Adding subscriber to audience:', to);
+        const audienceResult = await resend.contacts.create({
+          email: to,
+          audienceId: '5bdcc1af-98be-4def-bf26-77e3904ebf88', // Your General audience ID
+        });
+        console.log('Added to audience:', audienceResult);
+      } catch (audienceError) {
+        console.error('Failed to add to audience:', audienceError);
+        // Don't fail the email send if audience add fails
+      }
     }
 
     const { data, error } = await resend.emails.send({

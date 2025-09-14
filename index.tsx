@@ -2851,6 +2851,7 @@ const handleNewsletterSignup = async (e: Event) => {
                 body: JSON.stringify({
                     to: email,
                     subject: '🎉 ¡Bienvenida! Tu 10% de descuento te espera',
+                    addToAudience: true,
                     html: `
                         <!DOCTYPE html>
                         <html>
