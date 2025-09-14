@@ -2389,9 +2389,9 @@ const validateBookingForm = (): boolean => {
     const termsElement = document.getElementById('terms') as HTMLInputElement;
     if (termsElement) {
         const terms = termsElement.checked;
-        if (!terms) {
-            showFieldError('terms', 'Debes aceptar los términos y condiciones');
-            isValid = false;
+    if (!terms) {
+        showFieldError('terms', 'Debes aceptar los términos y condiciones');
+        isValid = false;
         }
     }
 
@@ -2900,10 +2900,10 @@ const sendBookingConfirmationEmail = async (bookingData: {
 }) => {
     try {
         const response = await fetch(EMAIL_API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             body: JSON.stringify({
                 email: bookingData.email,
                 type: 'booking',
@@ -2939,11 +2939,6 @@ const showNewsletterMessage = (messageDiv: HTMLElement, message: string, type: '
         messageDiv.style.display = 'none';
     }, 5000);
 };
-            
-            console.log('📥 Response Status:', response.status);
-            console.log('📥 Response Headers:', Object.fromEntries(response.headers.entries()));
-            
-            if (!response.ok) {
                 const errorText = await response.text();
                 console.error('❌ API Error Response:', {
                     status: response.status,
@@ -2980,7 +2975,7 @@ const showNewsletterMessage = (messageDiv: HTMLElement, message: string, type: '
                 event_category: 'engagement',
                 event_label: 'newsletter_subscription'
             });
-        }
+            }
             
             // Still show success since we saved locally
             showProfessionalSuccessNotification('¡Gracias! Te has suscrito exitosamente. Revisa tu email para tu bienvenida especial. 💅✨', 'success');
@@ -2993,6 +2988,7 @@ const showNewsletterMessage = (messageDiv: HTMLElement, message: string, type: '
                     event_label: 'newsletter_subscription'
                 });
             }
+        }
     } catch (error) {
         console.error('Newsletter signup error:', error);
         showProfessionalSuccessNotification('Hubo un error al suscribirte. Por favor, inténtalo de nuevo.', 'error');
