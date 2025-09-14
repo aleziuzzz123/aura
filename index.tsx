@@ -3537,15 +3537,25 @@ const createSubscriptionBanner = () => {
         const toggleStickyCTA = () => {
             if (!heroSection) return;
             
+            // Check if user closed the sticky bar in this session
+            if (sessionStorage.getItem('sticky-booking-closed') === 'true') {
+                console.log('🚫 Sticky bar closed by user - not showing');
+                return;
+            }
+            
             const heroBottom = heroSection.getBoundingClientRect().bottom;
             const shouldShow = heroBottom < 0 && !isVisible;
             const shouldHide = heroBottom >= 0 && isVisible;
             
             if (shouldShow) {
+                console.log('📜 User scrolled past hero - showing sticky bar');
                 stickyCTA.style.transform = 'translateY(0)';
                 stickyCTA.style.opacity = '1';
+                stickyCTA.style.visibility = 'visible';
+                stickyCTA.style.display = 'block';
                 isVisible = true;
             } else if (shouldHide) {
+                console.log('📜 User scrolled back to hero - hiding sticky bar');
                 stickyCTA.style.transform = 'translateY(100%)';
                 stickyCTA.style.opacity = '0';
                 isVisible = false;
@@ -3556,10 +3566,12 @@ const createSubscriptionBanner = () => {
         closeBtn?.addEventListener('click', () => {
             stickyCTA.style.transform = 'translateY(100%)';
             stickyCTA.style.opacity = '0';
+            stickyCTA.style.visibility = 'hidden';
             isVisible = false;
             
-            // Hide for session
+            // Hide for session only (will show again on page refresh)
             sessionStorage.setItem('sticky-booking-closed', 'true');
+            console.log('❌ Sticky bar closed by user - will show again on page refresh');
         });
 
         // Check if user closed it in this session or already subscribed
@@ -3816,21 +3828,8 @@ const createSubscriptionBanner = () => {
         // Track scroll events
         window.addEventListener('scroll', toggleStickyCTA);
         
-        // Show sticky bar immediately on page load (if not closed)
-        setTimeout(() => {
-            // Check if user closed it in this session or already subscribed
-            if (sessionStorage.getItem('sticky-booking-closed') === 'true' || localStorage.getItem('sticky-subscribed') === 'true') {
-                console.log('🚫 Sticky bar not shown - user closed it or already subscribed');
-                return;
-            }
-            
-            console.log('🕐 Showing sticky bar immediately');
-            stickyCTA.style.transform = 'translateY(0)';
-            stickyCTA.style.opacity = '1';
-            stickyCTA.style.visibility = 'visible';
-            stickyCTA.style.display = 'block';
-            isVisible = true;
-        }, 1000); // Show after 1 second
+        // Don't show sticky bar immediately - wait for scroll
+        console.log('🕐 Sticky bar ready - will show on scroll');
         
         // Initial check
         toggleStickyCTA();
@@ -3843,8 +3842,7 @@ const createSubscriptionBanner = () => {
             console.log('✅ Sticky bar manually shown');
         };
         
-        // Show sticky bar immediately on page load for testing
-        (window as any).showStickyBar();
+        // Sticky bar will show on scroll, not immediately
         
         (window as any).hideStickyBar = () => {
             stickyCTA.style.transform = 'translateY(100%)';
