@@ -21,68 +21,68 @@ This document outlines the complete email marketing strategy for special days th
 ### January
 | Date | Event | Discount | Code | Template | Status |
 |------|-------|----------|------|----------|--------|
-| Jan 1 | Año Nuevo | 35% | NUEVO2024 | new-years-day.html | ✅ Ready |
+| Jan 1 | Año Nuevo | 15% | NUEVO2024 | new-years-day.html | ✅ Ready |
 
 ### February
 | Date | Event | Discount | Code | Template | Status |
 |------|-------|----------|------|----------|--------|
-| Feb 14 | San Valentín | 20% | AMOR2024 | valentines-day.html | ✅ Ready |
+| Feb 14 | San Valentín | 12% | AMOR2024 | valentines-day.html | ✅ Ready |
 
 ### March
 | Date | Event | Discount | Code | Template | Status |
 |------|-------|----------|------|----------|--------|
-| Mar 8 | Día Internacional de la Mujer | 25% | MUJER2024 | womens-day.html | ⏳ Pending |
-| Mar 20 | Equinoccio de Primavera | 20% | PRIMAVERA2024 | spring-equinox.html | ⏳ Pending |
+| Mar 8 | Día Internacional de la Mujer | 16% | MUJER2024 | womens-day.html | ⏳ Pending |
+| Mar 20 | Equinoccio de Primavera | 10% | PRIMAVERA2024 | spring-equinox.html | ⏳ Pending |
 
 ### April
 | Date | Event | Discount | Code | Template | Status |
 |------|-------|----------|------|----------|--------|
-| Apr 22 | Día de la Tierra | 15% | TIERRA2024 | earth-day.html | ⏳ Pending |
+| Apr 22 | Día de la Tierra | 8% | TIERRA2024 | earth-day.html | ⏳ Pending |
 
 ### May
 | Date | Event | Discount | Code | Template | Status |
 |------|-------|----------|------|----------|--------|
-| May 5 | Cinco de Mayo | 20% | CINCO2024 | cinco-de-mayo.html | ⏳ Pending |
-| May 12 | Día de las Madres | 25% | MAMA2024 | mothers-day.html | ✅ Ready |
+| May 5 | Cinco de Mayo | 12% | CINCO2024 | cinco-de-mayo.html | ⏳ Pending |
+| May 12 | Día de las Madres | 18% | MAMA2024 | mothers-day.html | ✅ Ready |
 
 ### June
 | Date | Event | Discount | Code | Template | Status |
 |------|-------|----------|------|----------|--------|
-| Jun 16 | Día del Padre | 20% | PAPA2024 | fathers-day.html | ⏳ Pending |
-| Jun 21 | Solsticio de Verano | 20% | VERANO2024 | summer-solstice.html | ⏳ Pending |
+| Jun 16 | Día del Padre | 12% | PAPA2024 | fathers-day.html | ⏳ Pending |
+| Jun 21 | Solsticio de Verano | 10% | VERANO2024 | summer-solstice.html | ⏳ Pending |
 
 ### July
 | Date | Event | Discount | Code | Template | Status |
 |------|-------|----------|------|----------|--------|
-| Jul 4 | Día de la Independencia | 20% | INDEPENDENCIA2024 | independence-day.html | ⏳ Pending |
+| Jul 4 | Día de la Independencia | 12% | INDEPENDENCIA2024 | independence-day.html | ⏳ Pending |
 
 ### August
 | Date | Event | Discount | Code | Template | Status |
 |------|-------|----------|------|----------|--------|
-| Aug 15 | Regreso a Clases | 30% | ESTUDIANTE2024 | back-to-school.html | ⏳ Pending |
+| Aug 15 | Regreso a Clases | 15% | ESTUDIANTE2024 | back-to-school.html | ⏳ Pending |
 
 ### September
 | Date | Event | Discount | Code | Template | Status |
 |------|-------|----------|------|----------|--------|
-| Sep 16 | Día de la Independencia de México | 25% | MEXICO2024 | mexican-independence.html | ⏳ Pending |
-| Sep 22 | Equinoccio de Otoño | 20% | OTONO2024 | autumn-equinox.html | ⏳ Pending |
+| Sep 16 | Día de la Independencia de México | 16% | MEXICO2024 | mexican-independence.html | ⏳ Pending |
+| Sep 22 | Equinoccio de Otoño | 10% | OTONO2024 | autumn-equinox.html | ⏳ Pending |
 
 ### October
 | Date | Event | Discount | Code | Template | Status |
 |------|-------|----------|------|----------|--------|
-| Oct 31 | Halloween | 20% | HALLOWEEN2024 | halloween.html | ⏳ Pending |
+| Oct 31 | Halloween | 12% | HALLOWEEN2024 | halloween.html | ⏳ Pending |
 
 ### November
 | Date | Event | Discount | Code | Template | Status |
 |------|-------|----------|------|----------|--------|
-| Nov 24 | Black Friday | 40% | BLACKFRIDAY2024 | black-friday.html | ⏳ Pending |
-| Nov 27 | Cyber Monday | 35% | CYBER2024 | cyber-monday.html | ⏳ Pending |
+| Nov 24 | Black Friday | 20% | BLACKFRIDAY2024 | black-friday.html | ⏳ Pending |
+| Nov 27 | Cyber Monday | 18% | CYBER2024 | cyber-monday.html | ⏳ Pending |
 
 ### December
 | Date | Event | Discount | Code | Template | Status |
 |------|-------|----------|------|----------|--------|
-| Dec 25 | Navidad | 30% | NAVIDAD2024 | christmas.html | ✅ Ready |
-| Dec 31 | Nochevieja | 25% | NOCHEVIEJA2024 | new-years-eve.html | ⏳ Pending |
+| Dec 25 | Navidad | 16% | NAVIDAD2024 | christmas.html | ✅ Ready |
+| Dec 31 | Nochevieja | 14% | NOCHEVIEJA2024 | new-years-eve.html | ⏳ Pending |
 
 ## 🎨 Email Template Design
 

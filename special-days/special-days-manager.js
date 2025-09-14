@@ -8,9 +8,9 @@ class SpecialDaysManager {
             '01-01': {
                 name: 'Año Nuevo',
                 template: 'new-years-day.html',
-                subject: '🎊 ¡Año Nuevo, Tú Nueva! - 35% de descuento',
+                subject: '🎊 ¡Año Nuevo, Tú Nueva! - 15% de descuento',
                 discountCode: 'NUEVO2024',
-                discountPercent: 35,
+                discountPercent: 15,
                 validUntil: '31-01',
                 emoji: '🎊',
                 color: '#ffd700'
@@ -20,9 +20,9 @@ class SpecialDaysManager {
             '02-14': {
                 name: 'San Valentín',
                 template: 'valentines-day.html',
-                subject: '💕 ¡San Valentín Romántico! - 20% de descuento',
+                subject: '💕 ¡San Valentín Romántico! - 12% de descuento',
                 discountCode: 'AMOR2024',
-                discountPercent: 20,
+                discountPercent: 12,
                 validUntil: '20-02',
                 emoji: '💕',
                 color: '#e91e63'
@@ -32,9 +32,9 @@ class SpecialDaysManager {
             '03-08': {
                 name: 'Día Internacional de la Mujer',
                 template: 'womens-day.html',
-                subject: '👩 ¡Celebra tu día! - 25% de descuento',
+                subject: '👩 ¡Celebra tu día! - 16% de descuento',
                 discountCode: 'MUJER2024',
-                discountPercent: 25,
+                discountPercent: 16,
                 validUntil: '15-03',
                 emoji: '👩',
                 color: '#ff6b9d'
@@ -43,9 +43,9 @@ class SpecialDaysManager {
             '03-20': {
                 name: 'Equinoccio de Primavera',
                 template: 'spring-equinox.html',
-                subject: '🌸 ¡Renovación de Primavera! - 20% de descuento',
+                subject: '🌸 ¡Renovación de Primavera! - 10% de descuento',
                 discountCode: 'PRIMAVERA2024',
-                discountPercent: 20,
+                discountPercent: 10,
                 validUntil: '30-03',
                 emoji: '🌸',
                 color: '#4caf50'
@@ -55,9 +55,9 @@ class SpecialDaysManager {
             '04-22': {
                 name: 'Día de la Tierra',
                 template: 'earth-day.html',
-                subject: '🌍 ¡Belleza Natural! - 15% de descuento',
+                subject: '🌍 ¡Belleza Natural! - 8% de descuento',
                 discountCode: 'TIERRA2024',
-                discountPercent: 15,
+                discountPercent: 8,
                 validUntil: '30-04',
                 emoji: '🌍',
                 color: '#4caf50'
@@ -67,9 +67,9 @@ class SpecialDaysManager {
             '05-12': {
                 name: 'Día de las Madres',
                 template: 'mothers-day.html',
-                subject: '👩‍👧‍👦 ¡Feliz Día de las Madres! - 25% de descuento',
+                subject: '👩‍👧‍👦 ¡Feliz Día de las Madres! - 18% de descuento',
                 discountCode: 'MAMA2024',
-                discountPercent: 25,
+                discountPercent: 18,
                 validUntil: '15-05',
                 emoji: '👩‍👧‍👦',
                 color: '#ff6b9d'
@@ -78,9 +78,9 @@ class SpecialDaysManager {
             '05-05': {
                 name: 'Cinco de Mayo',
                 template: 'cinco-de-mayo.html',
-                subject: '🇲🇽 ¡Fiesta de Belleza! - 20% de descuento',
+                subject: '🇲🇽 ¡Fiesta de Belleza! - 12% de descuento',
                 discountCode: 'CINCO2024',
-                discountPercent: 20,
+                discountPercent: 12,
                 validUntil: '10-05',
                 emoji: '🇲🇽',
                 color: '#ff9800'
@@ -90,9 +90,9 @@ class SpecialDaysManager {
             '06-16': {
                 name: 'Día del Padre',
                 template: 'fathers-day.html',
-                subject: '👨 ¡Día del Padre! - 20% de descuento',
+                subject: '👨 ¡Día del Padre! - 12% de descuento',
                 discountCode: 'PAPA2024',
-                discountPercent: 20,
+                discountPercent: 12,
                 validUntil: '25-06',
                 emoji: '👨',
                 color: '#2196f3'
@@ -101,9 +101,9 @@ class SpecialDaysManager {
             '06-21': {
                 name: 'Solsticio de Verano',
                 template: 'summer-solstice.html',
-                subject: '☀️ ¡Lista para el Verano! - 20% de descuento',
+                subject: '☀️ ¡Lista para el Verano! - 10% de descuento',
                 discountCode: 'VERANO2024',
-                discountPercent: 20,
+                discountPercent: 10,
                 validUntil: '30-06',
                 emoji: '☀️',
                 color: '#ff9800'
@@ -113,9 +113,9 @@ class SpecialDaysManager {
             '07-04': {
                 name: 'Día de la Independencia',
                 template: 'independence-day.html',
-                subject: '🇺🇸 ¡Red, White & Beautiful! - 20% de descuento',
+                subject: '🇺🇸 ¡Red, White & Beautiful! - 12% de descuento',
                 discountCode: 'INDEPENDENCIA2024',
-                discountPercent: 20,
+                discountPercent: 12,
                 validUntil: '10-07',
                 emoji: '🇺🇸',
                 color: '#f44336'
@@ -125,9 +125,9 @@ class SpecialDaysManager {
             '08-15': {
                 name: 'Regreso a Clases',
                 template: 'back-to-school.html',
-                subject: '🎓 ¡Especial Estudiantes! - 30% de descuento',
+                subject: '🎓 ¡Especial Estudiantes! - 15% de descuento',
                 discountCode: 'ESTUDIANTE2024',
-                discountPercent: 30,
+                discountPercent: 15,
                 validUntil: '30-08',
                 emoji: '🎓',
                 color: '#9c27b0'
@@ -137,9 +137,9 @@ class SpecialDaysManager {
             '09-16': {
                 name: 'Día de la Independencia de México',
                 template: 'mexican-independence.html',
-                subject: '🇲🇽 ¡Viva la Belleza! - 25% de descuento',
+                subject: '🇲🇽 ¡Viva la Belleza! - 16% de descuento',
                 discountCode: 'MEXICO2024',
-                discountPercent: 25,
+                discountPercent: 16,
                 validUntil: '25-09',
                 emoji: '🇲🇽',
                 color: '#4caf50'
@@ -148,9 +148,9 @@ class SpecialDaysManager {
             '09-22': {
                 name: 'Equinoccio de Otoño',
                 template: 'autumn-equinox.html',
-                subject: '🍂 ¡Belleza de Otoño! - 20% de descuento',
+                subject: '🍂 ¡Belleza de Otoño! - 10% de descuento',
                 discountCode: 'OTONO2024',
-                discountPercent: 20,
+                discountPercent: 10,
                 validUntil: '30-09',
                 emoji: '🍂',
                 color: '#ff9800'
@@ -160,9 +160,9 @@ class SpecialDaysManager {
             '10-31': {
                 name: 'Halloween',
                 template: 'halloween.html',
-                subject: '🎃 ¡Spooky Beautiful! - 20% de descuento',
+                subject: '🎃 ¡Spooky Beautiful! - 12% de descuento',
                 discountCode: 'HALLOWEEN2024',
-                discountPercent: 20,
+                discountPercent: 12,
                 validUntil: '05-11',
                 emoji: '🎃',
                 color: '#ff9800'
@@ -172,9 +172,9 @@ class SpecialDaysManager {
             '11-24': {
                 name: 'Black Friday',
                 template: 'black-friday.html',
-                subject: '🖤 ¡Black Friday Beauty! - 40% de descuento',
+                subject: '🖤 ¡Black Friday Beauty! - 20% de descuento',
                 discountCode: 'BLACKFRIDAY2024',
-                discountPercent: 40,
+                discountPercent: 20,
                 validUntil: '30-11',
                 emoji: '🖤',
                 color: '#000000'
@@ -183,9 +183,9 @@ class SpecialDaysManager {
             '11-27': {
                 name: 'Cyber Monday',
                 template: 'cyber-monday.html',
-                subject: '💻 ¡Cyber Beauty! - 35% de descuento',
+                subject: '💻 ¡Cyber Beauty! - 18% de descuento',
                 discountCode: 'CYBER2024',
-                discountPercent: 35,
+                discountPercent: 18,
                 validUntil: '30-11',
                 emoji: '💻',
                 color: '#2196f3'
@@ -195,9 +195,9 @@ class SpecialDaysManager {
             '12-25': {
                 name: 'Navidad',
                 template: 'christmas.html',
-                subject: '🎄 ¡Navidad Mágica! - 30% de descuento',
+                subject: '🎄 ¡Navidad Mágica! - 16% de descuento',
                 discountCode: 'NAVIDAD2024',
-                discountPercent: 30,
+                discountPercent: 16,
                 validUntil: '31-12',
                 emoji: '🎄',
                 color: '#c41e3a'
@@ -206,9 +206,9 @@ class SpecialDaysManager {
             '12-31': {
                 name: 'Nochevieja',
                 template: 'new-years-eve.html',
-                subject: '🎊 ¡Ring in the New Year! - 25% de descuento',
+                subject: '🎊 ¡Ring in the New Year! - 14% de descuento',
                 discountCode: 'NOCHEVIEJA2024',
-                discountPercent: 25,
+                discountPercent: 14,
                 validUntil: '05-01',
                 emoji: '🎊',
                 color: '#ffd700'

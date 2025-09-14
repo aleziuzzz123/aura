@@ -36,11 +36,11 @@ Use the admin interface to send test emails for any special day campaign.
 ## 📧 Email Templates
 
 ### Available Templates
-- ✅ **Mother's Day** - 25% discount, code: MAMA2024
-- ✅ **Christmas** - 30% discount, code: NAVIDAD2024
-- ✅ **Valentine's Day** - 20% discount, code: AMOR2024
-- ✅ **New Year's Day** - 35% discount, code: NUEVO2024
-- ✅ **Black Friday** - 40% discount, code: BLACKFRIDAY2024
+- ✅ **Mother's Day** - 18% discount, code: MAMA2024
+- ✅ **Christmas** - 16% discount, code: NAVIDAD2024
+- ✅ **Valentine's Day** - 12% discount, code: AMOR2024
+- ✅ **New Year's Day** - 15% discount, code: NUEVO2024
+- ✅ **Black Friday** - 20% discount, code: BLACKFRIDAY2024
 
 ### Template Features
 - **Responsive Design**: Works on all devices
@@ -52,46 +52,46 @@ Use the admin interface to send test emails for any special day campaign.
 ## 🎯 Special Days Calendar
 
 ### January
-- **New Year's Day** (Jan 1) - 35% off
+- **New Year's Day** (Jan 1) - 15% off
 
 ### February
-- **Valentine's Day** (Feb 14) - 20% off
+- **Valentine's Day** (Feb 14) - 12% off
 
 ### March
-- **International Women's Day** (Mar 8) - 25% off
-- **Spring Equinox** (Mar 20) - 20% off
+- **International Women's Day** (Mar 8) - 16% off
+- **Spring Equinox** (Mar 20) - 10% off
 
 ### April
-- **Earth Day** (Apr 22) - 15% off
+- **Earth Day** (Apr 22) - 8% off
 
 ### May
-- **Cinco de Mayo** (May 5) - 20% off
-- **Mother's Day** (May 12) - 25% off
+- **Cinco de Mayo** (May 5) - 12% off
+- **Mother's Day** (May 12) - 18% off
 
 ### June
-- **Father's Day** (Jun 16) - 20% off
-- **Summer Solstice** (Jun 21) - 20% off
+- **Father's Day** (Jun 16) - 12% off
+- **Summer Solstice** (Jun 21) - 10% off
 
 ### July
-- **Independence Day** (Jul 4) - 20% off
+- **Independence Day** (Jul 4) - 12% off
 
 ### August
-- **Back to School** (Aug 15) - 30% off
+- **Back to School** (Aug 15) - 15% off
 
 ### September
-- **Mexican Independence** (Sep 16) - 25% off
-- **Autumn Equinox** (Sep 22) - 20% off
+- **Mexican Independence** (Sep 16) - 16% off
+- **Autumn Equinox** (Sep 22) - 10% off
 
 ### October
-- **Halloween** (Oct 31) - 20% off
+- **Halloween** (Oct 31) - 12% off
 
 ### November
-- **Black Friday** (Nov 24) - 40% off
-- **Cyber Monday** (Nov 27) - 35% off
+- **Black Friday** (Nov 24) - 20% off
+- **Cyber Monday** (Nov 27) - 18% off
 
 ### December
-- **Christmas** (Dec 25) - 30% off
-- **New Year's Eve** (Dec 31) - 25% off
+- **Christmas** (Dec 25) - 16% off
+- **New Year's Eve** (Dec 31) - 14% off
 
 ## 🔧 Technical Implementation
 

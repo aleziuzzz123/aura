@@ -35,36 +35,36 @@ exports.handler = async (event, context) => {
         const specialDays = {
             '01-01': {
                 name: 'Año Nuevo',
-                subject: '🎊 ¡Año Nuevo, Tú Nueva! - 35% de descuento',
+                subject: '🎊 ¡Año Nuevo, Tú Nueva! - 15% de descuento',
                 discountCode: 'NUEVO2024',
-                discountPercent: 35,
+                discountPercent: 15,
                 validUntil: '31-01',
                 emoji: '🎊',
                 color: '#ffd700'
             },
             '02-14': {
                 name: 'San Valentín',
-                subject: '💕 ¡San Valentín Romántico! - 20% de descuento',
+                subject: '💕 ¡San Valentín Romántico! - 12% de descuento',
                 discountCode: 'AMOR2024',
-                discountPercent: 20,
+                discountPercent: 12,
                 validUntil: '20-02',
                 emoji: '💕',
                 color: '#e91e63'
             },
             '05-12': {
                 name: 'Día de las Madres',
-                subject: '👩‍👧‍👦 ¡Feliz Día de las Madres! - 25% de descuento',
+                subject: '👩‍👧‍👦 ¡Feliz Día de las Madres! - 18% de descuento',
                 discountCode: 'MAMA2024',
-                discountPercent: 25,
+                discountPercent: 18,
                 validUntil: '15-05',
                 emoji: '👩‍👧‍👦',
                 color: '#ff6b9d'
             },
             '12-25': {
                 name: 'Navidad',
-                subject: '🎄 ¡Navidad Mágica! - 30% de descuento',
+                subject: '🎄 ¡Navidad Mágica! - 16% de descuento',
                 discountCode: 'NAVIDAD2024',
-                discountPercent: 30,
+                discountPercent: 16,
                 validUntil: '31-12',
                 emoji: '🎄',
                 color: '#c41e3a'
