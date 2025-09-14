@@ -3827,8 +3827,10 @@ const createSubscriptionBanner = () => {
             console.log('🕐 Showing sticky bar immediately');
             stickyCTA.style.transform = 'translateY(0)';
             stickyCTA.style.opacity = '1';
+            stickyCTA.style.visibility = 'visible';
+            stickyCTA.style.display = 'block';
             isVisible = true;
-        }, 2000); // Show after 2 seconds
+        }, 1000); // Show after 1 second
         
         // Initial check
         toggleStickyCTA();
@@ -3852,11 +3854,18 @@ const createSubscriptionBanner = () => {
         };
         
         (window as any).clearStickyBarState = () => {
+            sessionStorage.removeItem('sticky-booking-closed');
             localStorage.removeItem('sticky-cta-closed');
             localStorage.removeItem('sticky-subscribed');
             localStorage.removeItem('newsletter_subscriptions');
             localStorage.removeItem('newsletter_subscribers');
             console.log('🧹 Sticky bar state cleared');
+            // Force show the sticky bar
+            stickyCTA.style.transform = 'translateY(0)';
+            stickyCTA.style.opacity = '1';
+            stickyCTA.style.visibility = 'visible';
+            stickyCTA.style.display = 'block';
+            isVisible = true;
         };
         
         (window as any).checkStickyBarStatus = () => {
