@@ -201,6 +201,10 @@ p {
     transform: translateY(0);
     box-shadow: var(--shadow-soft);
     white-space: nowrap;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* Ensure buttons are always clickable */
     pointer-events: auto;
     z-index: 10;
@@ -242,6 +246,10 @@ p {
     overflow: hidden;
     box-shadow: var(--shadow-soft);
     white-space: nowrap;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .button-secondary::after {
@@ -285,6 +293,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo {
@@ -635,6 +644,9 @@ nav ul li a:hover {
     flex: 1;
     min-width: 120px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Elegant Testimonials Section */
@@ -1031,6 +1043,24 @@ nav ul li a:hover {
     transition: var(--transition);
     background: var(--color-white);
     color: var(--color-primary-dark);
+}
+
+/* Ensure date input is properly visible */
+.form-group input[type="date"] {
+    position: relative;
+    color-scheme: light;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-primary-medium);
+    border-radius: var(--border-radius);
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    min-height: 48px;
+}
+
+.form-group input[type="date"]:focus {
+    border-color: var(--color-primary-dark);
+    box-shadow: 0 0 0 3px rgba(101, 69, 41, 0.1);
+    outline: none;
 }
 
 .form-group input::placeholder,
@@ -1604,14 +1634,16 @@ nav ul li a:hover {
 }
 
 .contact-item a {
-    color: var(--color-accent);
+    color: var(--color-white) !important;
     text-decoration: none;
     transition: all 0.3s ease;
+    opacity: 0.9;
 }
 
 .contact-item a:hover {
-    color: var(--color-white);
+    color: var(--color-white) !important;
     text-decoration: underline;
+    opacity: 1;
 }
 
 /* Footer Bottom */
@@ -2046,6 +2078,145 @@ nav ul li a:hover {
     padding: 4rem 0;
 }
 
+/* Setmore Integration Styles */
+.setmore-booking-container {
+    background: var(--color-white);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.setmore-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.setmore-header h3 {
+    color: var(--color-primary-dark);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.setmore-header p {
+    color: var(--color-text-light);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.setmore-widget-container {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 2px dashed #e9ecef;
+}
+
+.setmore-loading {
+    text-align: center;
+    color: var(--color-text-light);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--color-primary-dark);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.setmore-fallback {
+    text-align: center;
+    padding: 2rem;
+}
+
+.fallback-content h4 {
+    color: var(--color-primary-dark);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.fallback-content p {
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.setmore-booking-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(101, 69, 41, 0.3);
+}
+
+.setmore-booking-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(101, 69, 41, 0.4);
+}
+
+/* Booking Alternatives */
+.booking-alternatives {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.alternative-item {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.alternative-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.alternative-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.alternative-content h4 {
+    color: var(--color-primary-dark);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.alternative-content p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.alternative-content .button {
+    width: 100%;
+    justify-content: center;
+}
+
 .booking-content {
     max-width: 1000px;
     margin: 0 auto;
@@ -2085,6 +2256,96 @@ nav ul li a:hover {
     font-family: inherit;
     color: var(--color-primary-dark);
     height: 60px;
+}
+
+/* Ensure date input matches other form fields */
+.booking-form .form-group input[type="date"] {
+    color-scheme: light;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-primary-medium);
+    border-radius: 12px;
+    padding: 1.2rem 1rem 0.8rem 1rem;
+    font-size: 1rem;
+    height: 60px;
+    min-height: 60px;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    color: var(--color-primary-dark);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.booking-form .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23655D4A' stroke-width='2'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E") no-repeat center;
+    background-size: 20px 20px;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.booking-form .form-group input[type="date"]:hover::-webkit-calendar-picker-indicator {
+    opacity: 1;
+}
+
+.booking-form .form-group input[type="date"]::-webkit-datetime-edit {
+    color: var(--color-primary-dark);
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.booking-form .form-group input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    background: transparent;
+}
+
+.booking-form .form-group input[type="date"]::-webkit-datetime-edit-text {
+    color: var(--color-primary-dark);
+    padding: 0 0.1em;
+}
+
+.booking-form .form-group input[type="date"]::-webkit-datetime-edit-month-field,
+.booking-form .form-group input[type="date"]::-webkit-datetime-edit-day-field,
+.booking-form .form-group input[type="date"]::-webkit-datetime-edit-year-field {
+    color: var(--color-primary-dark);
+    background: transparent;
+}
+
+/* Add placeholder-like styling for empty date input */
+.booking-form .form-group input[type="date"]:invalid {
+    color: #6b7280;
+}
+
+.booking-form .form-group input[type="date"]:invalid::-webkit-datetime-edit {
+    color: #6b7280;
+}
+
+.booking-form .form-group input[type="date"]:invalid::-webkit-datetime-edit-text {
+    color: #6b7280;
+}
+
+.booking-form .form-group input[type="date"]:invalid::-webkit-datetime-edit-month-field,
+.booking-form .form-group input[type="date"]:invalid::-webkit-datetime-edit-day-field,
+.booking-form .form-group input[type="date"]:invalid::-webkit-datetime-edit-year-field {
+    color: #6b7280;
+}
+
+.booking-form .form-group input[type="date"]:focus {
+    border-color: var(--color-primary-dark);
+    box-shadow: 0 0 0 3px rgba(101, 69, 41, 0.1);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.booking-form .form-group input[type="date"]:hover {
+    border-color: var(--color-primary-dark);
 }
 
 .booking-form .form-group input:focus,
@@ -2143,8 +2404,14 @@ nav ul li a:hover {
 /* Mobile Responsive for Compact Form */
 @media (max-width: 768px) {
     .booking-form .form-row {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 1rem;
+    }
+    
+    .booking-form .form-group {
+        width: 100%;
+        margin-bottom: 1rem;
     }
     
     .booking-form-card {
@@ -2155,6 +2422,7 @@ nav ul li a:hover {
     .booking-submit-btn {
         width: 100%;
         padding: 1.2rem 2rem;
+        margin-top: 1rem;
     }
 }
 
@@ -2509,6 +2777,39 @@ nav ul li a:hover {
         font-size: 1.5rem;
     }
     
+    /* Setmore Mobile Styles */
+    .setmore-booking-container {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .setmore-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .setmore-widget-container {
+        min-height: 500px;
+    }
+    
+    .booking-alternatives {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .alternative-item {
+        padding: 1.25rem;
+    }
+    
+    .alternative-icon {
+        font-size: 2rem;
+    }
+    
+    .setmore-booking-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+    
     .booking-header p {
         font-size: 0.9rem;
     }
@@ -2519,11 +2820,37 @@ nav ul li a:hover {
     }
     
     .form-row {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .form-group {
+        width: 100%;
+        margin-bottom: 1rem;
     }
     
     .booking-form {
         padding: 1.25rem;
+    }
+    
+    .booking-form .form-group input,
+    .booking-form .form-group select {
+        height: 50px;
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+    }
+    
+    .booking-form .form-group input[type="date"] {
+        height: 50px;
+        min-height: 50px;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+    }
+    
+    .booking-form .form-group label {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
     }
     
     .card-header {
@@ -2547,6 +2874,34 @@ nav ul li a:hover {
     
     .booking-form {
         padding: 1rem;
+    }
+    
+    .booking-form .form-group {
+        margin-bottom: 1.2rem;
+    }
+    
+    .booking-form .form-group input,
+    .booking-form .form-group select {
+        height: 48px;
+        font-size: 0.95rem;
+        padding: 0.7rem 0.9rem;
+    }
+    
+    .booking-form .form-group input[type="date"] {
+        height: 48px;
+        min-height: 48px;
+        padding: 0.7rem 0.9rem;
+        font-size: 0.95rem;
+    }
+    
+    .booking-form .form-group label {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .booking-submit-btn {
+        padding: 1rem 1.5rem;
+        font-size: 0.95rem;
     }
     
     .card-header {
@@ -2850,8 +3205,8 @@ footer {
 }
 
 .contact-item span {
-    color: var(--color-white);
-    opacity: 0.8;
+    color: var(--color-white) !important;
+    opacity: 0.9;
     font-size: 0.95rem;
 }
 
@@ -3091,7 +3446,8 @@ footer {
     border-top: 1px solid var(--color-light-bg);
     display: flex;
     gap: 1rem;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-footer .button {
@@ -3428,6 +3784,11 @@ footer {
     .contact-item p {
         font-size: 0.9rem;
         text-align: center;
+        color: var(--color-white) !important;
+    }
+    
+    .contact-item a {
+        color: var(--color-white) !important;
     }
     
     /* Form Elements Mobile */
@@ -3630,7 +3991,11 @@ footer {
     .contact-item p {
         font-size: 0.95rem;
         line-height: 1.6;
-        color: var(--color-text-dark);
+        color: var(--color-white) !important;
+    }
+    
+    .contact-item a {
+        color: var(--color-white) !important;
     }
     
     /* Form Elements Extra Small */
@@ -3879,6 +4244,39 @@ footer {
         display: none;
     }
     
+    nav ul.active {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-white);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 1rem 0;
+        border-radius: 0 0 8px 8px;
+    }
+    
+    nav ul.active li {
+        margin: 0;
+        padding: 0.5rem 1.5rem;
+    }
+    
+    nav ul.active a {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: var(--color-text-dark);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        border-radius: 4px;
+    }
+    
+    nav ul.active a:hover {
+        background: var(--color-primary-cream);
+        color: var(--color-primary-dark);
+    }
+    
     .mobile-menu-button {
         display: block;
         font-size: 2rem;
@@ -4066,10 +4464,13 @@ footer {
     .modal-footer {
         flex-direction: column;
         padding: 1.5rem;
+        align-items: center;
+        gap: 1rem;
     }
     
     .modal-footer .button {
         width: 100%;
+        max-width: 280px;
     }
 }
 
@@ -4390,6 +4791,7 @@ footer {
     
     .form-group {
         flex-direction: column;
+        align-items: center;
     }
     
     .newsletter-submit-btn {
@@ -4445,7 +4847,8 @@ footer {
 .newsletter-form .form-group {
     display: flex;
     gap: 1rem;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: center;
 }
 
 .newsletter-form input[type="email"] {
@@ -4477,6 +4880,9 @@ footer {
     font-weight: 600;
     white-space: nowrap;
     min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form-message {
@@ -4869,6 +5275,7 @@ footer {
     
     .newsletter-form .form-group {
         flex-direction: column;
+        align-items: center;
     }
     
     .newsletter-form .button {
@@ -4878,6 +5285,128 @@ footer {
     
     .trust-signals {
         gap: 0.5rem;
+    }
+}
+
+/* Professional Notification Styles */
+.professional-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    max-width: 400px;
+    background: var(--color-white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-elegant);
+    border: 1px solid var(--color-primary-light);
+    overflow: hidden;
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(10px);
+}
+
+.notification-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.notification-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+}
+
+.professional-notification.success .notification-icon {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.professional-notification.error .notification-icon {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.notification-text {
+    flex: 1;
+}
+
+.notification-text h4 {
+    font-family: var(--font-family-secondary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+}
+
+.notification-text p {
+    font-size: 0.95rem;
+    color: var(--color-text-medium);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.notification-close {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: none;
+    color: var(--color-text-light);
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.notification-close:hover {
+    background: var(--color-primary-soft);
+    color: var(--color-text-dark);
+}
+
+/* Animation for notification appearance */
+@keyframes slideInNotification {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.professional-notification {
+    animation: slideInNotification 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .professional-notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+    
+    .notification-content {
+        padding: 1rem;
+    }
+    
+    .notification-text h4 {
+        font-size: 1rem;
+    }
+    
+    .notification-text p {
+        font-size: 0.9rem;
     }
 }
 
@@ -4987,6 +5516,7 @@ footer {
     .newsletter-form .form-group {
         flex-direction: column;
         gap: 1rem;
+        align-items: center;
     }
     
     .newsletter-form .button {
@@ -5209,33 +5739,12 @@ footer {
     margin-top: 2rem;
 }
 
-.comparison-toggle {
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.comparison-toggle.has-selection {
-    background: var(--color-primary-dark);
-    color: var(--color-white);
-    transform: scale(1.05);
-}
 
 .service-card {
     position: relative;
     transition: all 0.3s ease;
 }
 
-.comparison-mode .service-card {
-    transform: scale(0.95);
-    opacity: 0.7;
-}
-
-.comparison-mode .service-card.has-comparison {
-    transform: scale(1.02);
-    opacity: 1;
-    box-shadow: 0 8px 25px rgba(101, 69, 41, 0.2);
-    border: 2px solid var(--color-primary-dark);
-}
 
 .service-image {
     position: relative;
@@ -5364,7 +5873,7 @@ footer {
     font-weight: bold;
 }
 
-/* Comparison Modal */
+/* Removed Comparison Modal */
 .comparison-modal {
     position: fixed;
     top: 0;
@@ -5818,30 +6327,49 @@ footer {
     object-fit: cover;
 }
 
-.modal-title-section {
+.modal-title-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-    padding: 2rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 3rem 2rem 2rem 2rem;
     color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .modal-title {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 2.2rem;
+    font-weight: 700;
     margin: 0 0 1rem 0;
     font-family: var(--font-heading);
+    color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    line-height: 1.2;
 }
 
 .modal-meta {
     display: flex;
     gap: 2rem;
     font-size: 1.1rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    color: white;
+    font-weight: 500;
+    flex-wrap: wrap;
+}
+
+.modal-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal-meta svg {
+    flex-shrink: 0;
+    color: white;
 }
 
 .modal-body {
@@ -5908,6 +6436,7 @@ footer {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    align-items: center;
 }
 
 .modal-reserve-btn,
@@ -5926,13 +6455,22 @@ footer {
         height: 200px;
     }
     
+    .modal-title-overlay {
+        padding: 2rem 1.5rem 1.5rem 1.5rem;
+    }
+    
     .modal-title {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
     
     .modal-meta {
         flex-direction: column;
         gap: 0.5rem;
+    }
+    
+    .modal-meta span {
+        padding: 0.4rem 0.8rem;
+        font-size: 1rem;
     }
     
     .modal-body {
@@ -5942,10 +6480,17 @@ footer {
     .modal-footer {
         flex-direction: column;
         padding: 1.5rem;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .modal-footer .button {
+        width: 100%;
+        max-width: 280px;
     }
 }
 
-/* Service Comparison Mode */
+/* Removed Service Comparison Mode */
 .comparison-mode .service-card {
     cursor: pointer;
     transition: all 0.3s ease;
@@ -6017,8 +6562,8 @@ footer {
     padding: 0.75rem 1rem;
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 25px;
-    background: rgba(255, 255, 255, 0.9);
-    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.95);
+    color: #333333 !important;
     font-size: 0.9rem;
     min-width: 200px;
     transition: all 0.3s ease;
@@ -6027,12 +6572,14 @@ footer {
 .sticky-email-input:focus {
     outline: none;
     border-color: var(--color-primary);
-    background: white;
+    background: white !important;
+    color: #333333 !important;
     box-shadow: 0 0 0 3px rgba(160, 129, 110, 0.2);
 }
 
 .sticky-email-input::placeholder {
-    color: var(--color-text-light);
+    color: #666666 !important;
+    opacity: 1;
 }
 
 .sticky-subscribe-btn {
@@ -6118,46 +6665,30 @@ footer {
     }
 }
 
-/* Enhanced Service Meta Styles */
-.service-meta {
+/* Service Details - Clean and Simple */
+.service-details {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin: 1rem 0;
-}
-
-.service-meta span {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--color-text-light);
-    padding: 0.5rem;
-    background: rgba(160, 129, 110, 0.1);
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, var(--color-primary-soft), rgba(160, 129, 110, 0.1));
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-primary-dark);
 }
 
-.service-meta span:hover {
-    background: rgba(160, 129, 110, 0.15);
-    transform: translateY(-1px);
-}
-
-.service-meta svg {
-    flex-shrink: 0;
-    color: var(--color-primary);
+.service-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    text-align: left;
 }
 
 .service-duration {
-    border-left: 3px solid #4CAF50;
-}
-
-.service-sessions {
-    border-left: 3px solid #2196F3;
-}
-
-.service-technology {
-    border-left: 3px solid #FF9800;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+    text-align: right;
 }
 
 /* Modal Meta Styles */
@@ -6173,27 +6704,33 @@ footer {
     align-items: center;
     gap: 0.75rem;
     font-size: 1rem;
-    color: var(--color-white);
+    color: var(--color-text-dark);
     padding: 0.75rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--color-primary-cream);
     border-radius: 10px;
-    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-primary-soft);
 }
 
 .modal-meta svg {
     flex-shrink: 0;
-    color: var(--color-white);
+    color: var(--color-primary-dark);
 }
 
-/* Responsive adjustments for service meta */
+/* Responsive adjustments for service details */
 @media (max-width: 768px) {
-    .service-meta {
-        gap: 0.4rem;
+    .service-details {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        padding: 0.75rem;
     }
     
-    .service-meta span {
+    .service-price {
+        font-size: 1rem;
+    }
+    
+    .service-duration {
         font-size: 0.85rem;
-        padding: 0.4rem;
     }
     
     .modal-meta {

@@ -278,6 +278,29 @@ const services = [
 // Make services data globally available immediately
 (window as any).servicesData = services;
 
+// --- Google Calendar API Loading ---
+const loadGoogleCalendarAPI = () => {
+    // Check if Google API is already loaded
+    if (typeof (window as any).gapi !== 'undefined') {
+        console.log('✅ Google API already loaded');
+        return;
+    }
+
+    // Load Google Calendar API script
+    const script = document.createElement('script');
+    script.src = 'https://apis.google.com/js/api.js';
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+        console.log('✅ Google Calendar API loaded successfully');
+    };
+    script.onerror = () => {
+        console.error('❌ Failed to load Google Calendar API');
+    };
+    
+    document.head.appendChild(script);
+};
+
 // --- App Structure ---
 const App = () => {
     const root = document.getElementById('root');
@@ -285,6 +308,9 @@ const App = () => {
 
     // Clear existing content
     root.innerHTML = '';
+
+    // Load Google Calendar API
+    loadGoogleCalendarAPI();
 
     // Create and append components
     const header = createHeader();
@@ -314,7 +340,9 @@ const App = () => {
     }, 100);
     
     // Add sticky booking CTA
-    root.appendChild(createStickyBookingCTA());
+    const stickyBar = createStickyBookingCTA();
+    root.appendChild(stickyBar);
+    console.log('✅ Sticky bar element created and added to DOM:', stickyBar);
     
     // Initialize carousel after DOM is ready
     setTimeout(() => {
@@ -740,14 +768,14 @@ const createServicesSection = () => {
                             <line x1="8" y1="2" x2="8" y2="6"></line>
                             <line x1="3" y1="10" x2="21" y2="10"></line>
                         </svg>
-                        ${service.details?.sessions || service.sessions || '1 sesión'}
+                        ${service.sessions || '1 sesión'}
                     </span>
                     <span class="service-technology">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-4"></path>
                             <rect x="9" y="3" width="6" height="8" rx="1"></rect>
                         </svg>
-                        ${service.details?.technology || service.technology || 'Tecnología Europea'}
+                        ${service.technology || 'Tecnología Europea'}
                     </span>
                 </div>
                 <div class="service-actions">
@@ -1134,6 +1162,11 @@ const createBookingSection = () => {
                             <span class="error-message" id="phone-error"></span>
         </div>
         <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                            <label for="email">Email *</label>
+                            <span class="error-message" id="email-error"></span>
+        </div>
+        <div class="form-group">
             <select id="service" name="service" required>
                                 <option value="">Selecciona un servicio</option>
                                 <option value="masaje-relajante">Masaje Relajante - $800</option>
@@ -1147,9 +1180,32 @@ const createBookingSection = () => {
                             <span class="error-message" id="service-error"></span>
         </div>
         <div class="form-group">
-                            <input type="date" id="date" name="date">
-                            <label for="date">Fecha Preferida</label>
+                            <input type="date" id="date" name="date" required placeholder="Selecciona una fecha">
+                            <label for="date">Fecha Preferida *</label>
                             <span class="error-message" id="date-error"></span>
+        </div>
+        <div class="form-group">
+                            <select id="time" name="time" required>
+                                <option value="">Selecciona una hora</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="10:30">10:30 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="11:30">11:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="12:30">12:30 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="13:30">1:30 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="14:30">2:30 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="15:30">3:30 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                                <option value="16:30">4:30 PM</option>
+                                <option value="17:00">5:00 PM</option>
+                                <option value="17:30">5:30 PM</option>
+                            </select>
+                            <label for="time">Hora Preferida *</label>
+                            <span class="error-message" id="time-error"></span>
         </div>
                     </div>
                     
@@ -1579,7 +1635,7 @@ const showServiceModal = (service: any) => {
             <button class="modal-close" aria-label="Cerrar">&times;</button>
             <div class="modal-header">
                 <img src="${service.img}" alt="${service.title}" class="modal-service-image">
-                <div class="modal-title-section">
+                <div class="modal-title-overlay">
                     <h2 class="modal-title">${service.title}</h2>
                     <div class="modal-meta">
                         <span class="modal-duration">
@@ -2050,7 +2106,7 @@ const showServiceModal = (service: any) => {
     (gallery as any).cleanup = cleanup;
 };
 
-// --- Booking Form Functionality ---
+// --- Google Calendar Integration ---
 (window as any).setupBookingForm = () => {
     const form = document.getElementById('booking-form') as HTMLFormElement;
     if (!form) return;
@@ -2086,12 +2142,11 @@ const showServiceModal = (service: any) => {
                 service: formData.get('service'),
                 date: formData.get('date'),
                 time: formData.get('time'),
-                message: formData.get('message'),
                 timestamp: new Date().toISOString()
             };
 
-            // Simulate form submission (replace with actual email service)
-            await submitBooking(bookingData);
+            // Create Google Calendar event
+            await createGoogleCalendarEvent(bookingData);
             
             // Show success message
             showBookingSuccess();
@@ -2105,18 +2160,168 @@ const showServiceModal = (service: any) => {
     });
 };
 
+const createGoogleCalendarEvent = async (bookingData: any) => {
+    console.log('📅 Creating Google Calendar event:', bookingData);
+    
+    try {
+        // Format the date and time for Google Calendar
+        const appointmentDate = new Date(`${bookingData.date}T${bookingData.time}:00`);
+        const endTime = new Date(appointmentDate.getTime() + 60 * 60 * 1000); // Add 1 hour
+        
+        // Create the event object
+        const event = {
+            summary: `Cita: ${bookingData.service} - ${bookingData.name}`,
+            description: `
+Cliente: ${bookingData.name}
+Email: ${bookingData.email}
+Teléfono: ${bookingData.phone}
+Servicio: ${bookingData.service}
+Fecha: ${bookingData.date}
+Hora: ${bookingData.time}
+
+Reserva realizada desde el sitio web de Heilen Beauty Spa.
+            `.trim(),
+            start: {
+                dateTime: appointmentDate.toISOString(),
+                timeZone: 'America/Cancun'
+            },
+            end: {
+                dateTime: endTime.toISOString(),
+                timeZone: 'America/Cancun'
+            },
+            attendees: [
+                { email: bookingData.email, displayName: bookingData.name }
+            ],
+            reminders: {
+                useDefault: false,
+                overrides: [
+                    { method: 'email', minutes: 24 * 60 }, // 1 day before
+                    { method: 'popup', minutes: 60 } // 1 hour before
+                ]
+            }
+        };
+
+        // Try to use Google Calendar API first
+        try {
+            await createEventWithGoogleAPI(event);
+            console.log('✅ Google Calendar API event created successfully');
+        } catch (apiError) {
+            console.log('⚠️ Google Calendar API not available, using fallback method');
+            // Fallback to "Add to Calendar" link
+            const googleCalendarUrl = createGoogleCalendarUrl(event);
+            window.open(googleCalendarUrl, '_blank');
+        }
+        
+        // Also send email notification (keeping existing email system)
+        await sendBookingConfirmationEmail({
+            name: bookingData.name as string,
+            email: bookingData.email as string,
+            phone: bookingData.phone as string,
+            service: bookingData.service as string,
+            date: bookingData.date as string,
+            time: bookingData.time as string
+        });
+        
+    } catch (error) {
+        console.error('❌ Error creating Google Calendar event:', error);
+        throw error;
+    }
+};
+
+const createEventWithGoogleAPI = async (event: any) => {
+    // Google Calendar API configuration
+    const GOOGLE_CLIENT_ID = '510575884862-a5ekpon7a4kadjgnbd02inotevqtp73t.apps.googleusercontent.com';
+    const GOOGLE_API_KEY = 'AIzaSyA_2bMmyvwUTZFoUI2sNFlHfrqSridUkSI';
+    const CALENDAR_ID = 'primary'; // Use primary calendar or specific calendar ID
+    
+    // Check if Google API is loaded
+    if (typeof (window as any).gapi === 'undefined') {
+        throw new Error('Google API not loaded');
+    }
+    
+    // Check if credentials are configured
+    if (GOOGLE_CLIENT_ID === 'YOUR_GOOGLE_CLIENT_ID' || GOOGLE_API_KEY === 'YOUR_GOOGLE_API_KEY') {
+        throw new Error('Google Calendar API credentials not configured');
+    }
+    
+    return new Promise((resolve, reject) => {
+        // Initialize Google API
+        (window as any).gapi.load('client:auth2', async () => {
+            try {
+                await (window as any).gapi.client.init({
+                    apiKey: GOOGLE_API_KEY,
+                    clientId: GOOGLE_CLIENT_ID,
+                    discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
+                    scope: 'https://www.googleapis.com/auth/calendar'
+                });
+                
+                // Authenticate user
+                const authInstance = (window as any).gapi.auth2.getAuthInstance();
+                const user = await authInstance.signIn();
+                
+                if (!user.isSignedIn()) {
+                    throw new Error('User not authenticated');
+                }
+                
+                // Create the event
+                const request = (window as any).gapi.client.calendar.events.insert({
+                    calendarId: CALENDAR_ID,
+                    resource: event
+                });
+                
+                const response = await request;
+                console.log('✅ Event created successfully:', response.result);
+                resolve(response.result);
+                
+            } catch (error) {
+                console.error('❌ Error creating Google Calendar event:', error);
+                reject(error);
+            }
+        });
+    });
+};
+
+const createGoogleCalendarUrl = (event: any) => {
+    const baseUrl = 'https://calendar.google.com/calendar/render';
+    const params = new URLSearchParams({
+        action: 'TEMPLATE',
+        text: event.summary,
+        dates: `${formatDateForGoogle(event.start.dateTime)}/${formatDateForGoogle(event.end.dateTime)}`,
+        details: event.description,
+        location: 'Heilen Beauty Spa, Cancún, México',
+        trp: 'false'
+    });
+    
+    return `${baseUrl}?${params.toString()}`;
+};
+
+const formatDateForGoogle = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+};
+
 const validateBookingForm = (): boolean => {
     let isValid = true;
     
     // Validate name
-    const name = (document.getElementById('name') as HTMLInputElement).value.trim();
+    const nameElement = document.getElementById('name') as HTMLInputElement;
+    if (!nameElement) {
+        console.error('Name input not found');
+        return false;
+    }
+    const name = nameElement.value.trim();
     if (!name || name.length < 2) {
         showFieldError('name', 'Por favor, ingresa tu nombre completo');
         isValid = false;
     }
 
     // Validate email
-    const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+    const emailElement = document.getElementById('email') as HTMLInputElement;
+    if (!emailElement) {
+        console.error('Email input not found');
+        return false;
+    }
+    const email = emailElement.value.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email)) {
         showFieldError('email', 'Por favor, ingresa un email válido');
@@ -2124,7 +2329,12 @@ const validateBookingForm = (): boolean => {
     }
 
     // Validate phone
-    const phone = (document.getElementById('phone') as HTMLInputElement).value.trim();
+    const phoneElement = document.getElementById('phone') as HTMLInputElement;
+    if (!phoneElement) {
+        console.error('Phone input not found');
+        return false;
+    }
+    const phone = phoneElement.value.trim();
     const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
     if (!phone || !phoneRegex.test(phone)) {
         showFieldError('phone', 'Por favor, ingresa un teléfono válido');
@@ -2132,14 +2342,24 @@ const validateBookingForm = (): boolean => {
     }
 
     // Validate service
-    const service = (document.getElementById('service') as HTMLSelectElement).value;
+    const serviceElement = document.getElementById('service') as HTMLSelectElement;
+    if (!serviceElement) {
+        console.error('Service select not found');
+        return false;
+    }
+    const service = serviceElement.value;
     if (!service) {
         showFieldError('service', 'Por favor, selecciona un servicio');
         isValid = false;
     }
 
     // Validate date
-    const date = (document.getElementById('date') as HTMLInputElement).value;
+    const dateElement = document.getElementById('date') as HTMLInputElement;
+    if (!dateElement) {
+        console.error('Date input not found');
+        return false;
+    }
+    const date = dateElement.value;
     if (!date) {
         showFieldError('date', 'Por favor, selecciona una fecha');
         isValid = false;
@@ -2154,17 +2374,25 @@ const validateBookingForm = (): boolean => {
     }
 
     // Validate time
-    const time = (document.getElementById('time') as HTMLSelectElement).value;
+    const timeElement = document.getElementById('time') as HTMLSelectElement;
+    if (!timeElement) {
+        console.error('Time select not found');
+        return false;
+    }
+    const time = timeElement.value;
     if (!time) {
         showFieldError('time', 'Por favor, selecciona una hora');
         isValid = false;
     }
 
-    // Validate terms
-    const terms = (document.getElementById('terms') as HTMLInputElement).checked;
-    if (!terms) {
-        showFieldError('terms', 'Debes aceptar los términos y condiciones');
-        isValid = false;
+    // Validate terms (optional - only if terms checkbox exists)
+    const termsElement = document.getElementById('terms') as HTMLInputElement;
+    if (termsElement) {
+        const terms = termsElement.checked;
+        if (!terms) {
+            showFieldError('terms', 'Debes aceptar los términos y condiciones');
+            isValid = false;
+        }
     }
 
     return isValid;
@@ -2274,7 +2502,7 @@ const submitBooking = async (bookingData: any) => {
         localStorage.setItem('bookings', JSON.stringify(bookings));
         
         console.log('✅ Booking confirmation emails sent successfully');
-        return Promise.resolve();
+    return Promise.resolve();
         
     } catch (error) {
         console.error('❌ Error sending booking emails:', error);
@@ -2473,9 +2701,95 @@ const setupSmoothScroll = (header: HTMLElement) => {
     }
 };
 
-// Resend API Configuration
-const RESEND_API_KEY = import.meta.env.VITE_RESEND_API_KEY || 're_Ui5ch7sQ_PsXuHSjHuXQWNKnzwRJP2ugV';
-const RESEND_API_URL = 'https://api.resend.com/emails';
+// Serverless function URL for email sending
+const EMAIL_API_URL = '/.netlify/functions/send-email';
+
+// Debug info on load
+console.log('🔍 Email API configured:', EMAIL_API_URL);
+
+// Test API key function (for debugging)
+(window as any).testResendAPI = async () => {
+    if (!RESEND_API_KEY) {
+        console.error('❌ No API key available for testing');
+        return;
+    }
+    
+    try {
+        console.log('🧪 Testing Resend API...');
+        const response = await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${RESEND_API_KEY}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                from: 'Heilen Beauty Spa <noreply@heilenbeautyspa.com>',
+                to: ['test@example.com'],
+                subject: 'API Test',
+                html: '<p>This is a test email</p>'
+            })
+        });
+        
+        console.log('🧪 Test Response Status:', response.status);
+        const result = await response.text();
+        console.log('🧪 Test Response:', result);
+        
+    } catch (error) {
+        console.error('🧪 Test Failed:', error);
+    }
+};
+
+// Professional Success Notification Function
+const showProfessionalSuccessNotification = (message: string, type: 'success' | 'error' = 'success') => {
+    // Remove any existing notifications
+    const existingNotification = document.querySelector('.professional-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+
+    const notification = createElement('div', {
+        className: 'professional-notification',
+        innerHTML: `
+            <div class="notification-content">
+                <div class="notification-icon">
+                    ${type === 'success' ? `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4"></path>
+                            <circle cx="12" cy="12" r="10"></circle>
+                        </svg>
+                    ` : `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                    `}
+                </div>
+                <div class="notification-text">
+                    <h4>${type === 'success' ? '¡Éxito!' : 'Error'}</h4>
+                    <p>${message}</p>
+                </div>
+                <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        `
+    });
+
+    document.body.appendChild(notification);
+
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateY(-20px)';
+            setTimeout(() => notification.remove(), 300);
+        }
+    }, 5000);
+};
 
 const handleNewsletterSignup = async (e: Event) => {
     e.preventDefault();
@@ -2492,7 +2806,7 @@ const handleNewsletterSignup = async (e: Event) => {
     // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email)) {
-        showNewsletterMessage(messageDiv, 'Por favor, ingresa un email válido', 'error');
+        showProfessionalSuccessNotification('Por favor, ingresa un email válido', 'error');
         return;
     }
     
@@ -2509,7 +2823,7 @@ const handleNewsletterSignup = async (e: Event) => {
         const existingSubscription = subscriptions.find((sub: any) => sub.email === email);
         
         if (existingSubscription) {
-            showNewsletterMessage(messageDiv, '¡Ya estás suscrito! Revisa tu email para tu descuento.', 'success');
+            showProfessionalSuccessNotification('¡Ya estás suscrito! Revisa tu email para tu descuento.', 'success');
             return;
         }
         
@@ -2522,170 +2836,166 @@ const handleNewsletterSignup = async (e: Event) => {
         });
         localStorage.setItem('newsletter_subscriptions', JSON.stringify(subscriptions));
         
-        // Try to send welcome email using Resend API
+        // Try to send welcome email using serverless function
         try {
-            // Check if API key is properly configured
-            if (!RESEND_API_KEY || RESEND_API_KEY === 're_Ui5ch7sQ_PsXuHSjHuXQWNKnzwRJP2ugV') {
-                console.warn('Using fallback API key - consider setting up environment variable');
-            }
+            console.log('📧 Sending email to:', email);
+            console.log('🌐 API URL:', EMAIL_API_URL);
             
-            // Create AbortController for timeout
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
-            
-            const response = await fetch(RESEND_API_URL, {
+            const response = await fetch(EMAIL_API_URL, {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${RESEND_API_KEY}`,
                     'Content-Type': 'application/json',
                 },
-                signal: controller.signal,
                 body: JSON.stringify({
-                    from: 'Heilen Beauty Spa <noreply@heilenbeautyspa.com>',
-                    to: [email],
-                    subject: '🎉 ¡Bienvenida! Tu 10% de descuento te espera',
-                    html: `
-                        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #fafafa;">
-                            <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                                
-                                <!-- Header -->
-                                <div style="background: linear-gradient(135deg, #a0816e, #8b6f47); padding: 30px; text-align: center;">
-                                    <img src="https://heilenbeautyspa.com/logo/HeilinBeautySpalogo.png" alt="Heilen Beauty Spa" style="max-width: 180px; height: auto; margin-bottom: 20px;">
-                                    <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 300;">¡Bienvenida a Heilen Beauty Spa!</h1>
-                                    <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">Tu oasis de belleza y bienestar</p>
-                                </div>
-                                
-                                <!-- Discount Card -->
-                                <div style="background: linear-gradient(135deg, #ff6b6b, #ee5a52); margin: -20px 20px 30px 20px; padding: 25px; border-radius: 15px; text-align: center; position: relative; z-index: 2;">
-                                    <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 15px;">
-                                        <h2 style="color: #ee5a52; margin: 0 0 10px 0; font-size: 24px;">🎁 ¡Tu 10% de descuento especial!</h2>
-                                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                                            <p style="margin: 0; color: #666; font-size: 14px;">Código de descuento:</p>
-                                            <p style="margin: 5px 0 0 0; font-size: 20px; font-weight: bold; color: #ee5a52; letter-spacing: 2px;">DESCUENTO10</p>
-                                        </div>
-                                        <p style="margin: 0; color: #666; font-size: 14px;">Válido para tu primera visita</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Content -->
-                                <div style="padding: 0 30px 30px 30px;">
-                                    <p style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
-                                        ¡Hola! 👋<br><br>
-                                        Gracias por suscribirte a nuestro newsletter. Como agradecimiento, te regalamos un <strong>10% de descuento</strong> en tu primera visita.
-                                    </p>
-                                    
-                                    <p style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
-                                        Además, ahora recibirás:
-                                    </p>
-                                    
-                                    <ul style="color: #333; line-height: 1.8; margin-bottom: 30px;">
-                                        <li>🎁 <strong>Promociones exclusivas</strong> solo para suscriptores</li>
-                                        <li>💡 <strong>Consejos de expertos</strong> para el cuidado de tu piel</li>
-                                        <li>✨ <strong>Noticias sobre nuevos tratamientos</strong> y tecnología</li>
-                                        <li>📅 <strong>Ofertas especiales</strong> en fechas importantes</li>
-                                    </ul>
-                                    
-                                    <!-- CTA Buttons -->
-                                    <div style="text-align: center; margin: 30px 0;">
-                                        <a href="https://wa.me/529982322090?text=¡Hola!%20Me%20suscribí%20al%20newsletter%20de%20Heilen%20Beauty%20Spa%20y%20recibí%20el%20código%20de%20descuento%20DESCUENTO10.%20Me%20gustaría%20reservar%20mi%20primera%20cita%20con%20el%2010%%20de%20descuento.%20¿Podrían%20ayudarme%20a%20agendar%20mi%20cita?%20Gracias!" 
-                                           style="background: #25D366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 0 10px 10px 10px; font-size: 16px;">
-                                            💬 Reservar con Descuento
-                                        </a>
-                                        <br>
-                                        <a href="https://heilenbeautyspa.com/#reservar-cita" 
-                                           style="background: #a0816e; color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 10px; font-size: 14px;">
-                                            🌐 Ver Nuestros Servicios
-                                        </a>
-                                    </div>
-                                    
-                                    <!-- Location Info -->
-                                    <div style="background: #f8f6f3; padding: 20px; border-radius: 10px; margin: 20px 0;">
-                                        <h4 style="color: #a0816e; margin-top: 0; text-align: center;">📍 Nuestra Ubicación</h4>
-                                        <p style="margin: 5px 0; text-align: center;"><strong>Plaza Aura, Cancún</strong></p>
-                                        <p style="margin: 5px 0; text-align: center; font-size: 14px; color: #666;">Subiendo el elevador del lado derecho, tercer nivel</p>
-                                        <p style="margin: 5px 0; text-align: center;">📞 (998) 232-2090</p>
-                                        <p style="margin: 5px 0; text-align: center;">🕒 Lun-Sáb: 10:00 AM - 6:00 PM</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Footer -->
-                                <div style="background: #f8f9fa; padding: 20px; text-align: center; border-top: 1px solid #eee;">
-                                    <p style="font-size: 14px; color: #666; margin: 0;">
-                                        <strong>Heilen Beauty Spa</strong><br>
-                                        Cancún, Quintana Roo<br>
-                                        <a href="https://heilenbeautyspa.com" style="color: #a0816e;">heilenbeautyspa.com</a>
-                                    </p>
-                                    <p style="font-size: 12px; color: #999; margin: 15px 0 0 0;">
-                                        Si no deseas recibir más emails, puedes <a href="#" style="color: #999;">darte de baja aquí</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    `
+                    email: email,
+                    type: 'newsletter'
                 })
             });
-
-            // Clear timeout
-            clearTimeout(timeoutId);
             
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const errorData = await response.json();
+                console.error('❌ Email API Error:', errorData);
+                throw new Error(`API request failed: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            console.log('✅ Email sent successfully:', result);
+            
+        } catch (apiError) {
+            console.error('❌ Email API failed, but subscription saved locally:', apiError);
+            console.error('📧 Email API request failed - possible network issue');
+        }
+        
+        // Show success message
+        showProfessionalSuccessNotification('¡Perfecto! Te hemos enviado tu descuento del 10% por email. Revisa tu bandeja de entrada. 🎉', 'success');
+        emailInput.value = '';
+        
+        // Track subscription in Google Analytics
+        if (typeof (window as any).gtag !== 'undefined') {
+            (window as any).gtag('event', 'newsletter_signup', {
+                event_category: 'engagement',
+                event_label: 'newsletter_subscription'
+            });
+        }
+    } catch (error) {
+        console.error('Newsletter signup error:', error);
+        showNewsletterMessage(messageDiv, 'Error al suscribirse. Inténtalo de nuevo.', 'error');
+    } finally {
+        // Reset button state
+        if (submitBtn && btnText && btnLoading) {
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+        }
+        submitBtn.disabled = false;
+    }
+};
+
+const sendBookingConfirmationEmail = async (bookingData: {
+    name: string;
+    email: string;
+    phone: string;
+    service: string;
+    date: string;
+    time: string;
+}) => {
+    try {
+        const response = await fetch(EMAIL_API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: bookingData.email,
+                type: 'booking',
+                bookingData: bookingData
+            })
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('❌ Booking Email API Error:', errorData);
+            throw new Error(`API request failed: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        console.log('✅ Booking email sent successfully:', result);
+        return result;
+        
+    } catch (error) {
+        console.error('Booking confirmation email error:', error);
+        throw error;
+    }
+};
+
+const showNewsletterMessage = (messageDiv: HTMLElement, message: string, type: 'success' | 'error') => {
+    if (!messageDiv) return;
+    
+    messageDiv.textContent = message;
+    messageDiv.className = `form-message ${type}`;
+    messageDiv.style.display = 'block';
+    
+    // Auto hide after 5 seconds
+    setTimeout(() => {
+        messageDiv.style.display = 'none';
+    }, 5000);
+};
+            
+            console.log('📥 Response Status:', response.status);
+            console.log('📥 Response Headers:', Object.fromEntries(response.headers.entries()));
+            
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('❌ API Error Response:', {
+                    status: response.status,
+                    statusText: response.statusText,
+                    body: errorText
+                });
+                throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
             }
 
             const result = await response.json();
-            console.log('Welcome email sent:', result);
+            console.log('✅ Welcome email sent successfully:', result);
+            console.log('📧 Email ID:', result.id);
             
             // Store email in localStorage as backup
-            const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
+        const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
             if (!subscribers.find(sub => sub.email === email)) {
-                subscribers.push({
-                    email: email,
-                    subscribedAt: new Date().toISOString(),
+            subscribers.push({
+                email: email,
+                subscribedAt: new Date().toISOString(),
                     source: form.id === 'footer-newsletter-form' ? 'footer' : 'main',
                     resendId: result.id,
                     discountCode: 'DESCUENTO10'
-                });
-                localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
-            }
-            
-            // Show success message
-            showNewsletterMessage(messageDiv, '¡Gracias! Te has suscrito exitosamente. Revisa tu email para tu bienvenida especial. 💅✨', 'success');
-            emailInput.value = '';
-            
-            // Track subscription in Google Analytics
-            if (typeof (window as any).gtag !== 'undefined') {
-                (window as any).gtag('event', 'newsletter_signup', {
-                    event_category: 'engagement',
-                    event_label: 'newsletter_subscription'
-                });
-            }
-            
-        } catch (apiError) {
-            console.warn('Email API failed, but subscription saved locally:', apiError);
-            
-            // Check if it's a timeout or network error
-            if (apiError.name === 'AbortError') {
-                console.warn('Email API request timed out');
-            } else if (apiError.message.includes('Failed to fetch')) {
-                console.warn('Email API request failed - possible CORS or network issue');
-            }
-            
-            // Still show success since we saved locally
-            showNewsletterMessage(messageDiv, '¡Gracias! Te has suscrito exitosamente. Revisa tu email para tu bienvenida especial. 💅✨', 'success');
-            emailInput.value = '';
-            
-            // Track subscription in Google Analytics
-            if (typeof (window as any).gtag !== 'undefined') {
-                (window as any).gtag('event', 'newsletter_signup', {
-                    event_category: 'engagement',
-                    event_label: 'newsletter_subscription'
-                });
-            }
+            });
+            localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
         }
         
+        // Show success message
+            showProfessionalSuccessNotification('¡Gracias! Te has suscrito exitosamente. Revisa tu email para tu bienvenida especial. 💅✨', 'success');
+        emailInput.value = '';
+        
+        // Track subscription in Google Analytics
+        if (typeof (window as any).gtag !== 'undefined') {
+            (window as any).gtag('event', 'newsletter_signup', {
+                event_category: 'engagement',
+                event_label: 'newsletter_subscription'
+            });
+        }
+            
+            // Still show success since we saved locally
+            showProfessionalSuccessNotification('¡Gracias! Te has suscrito exitosamente. Revisa tu email para tu bienvenida especial. 💅✨', 'success');
+            emailInput.value = '';
+            
+            // Track subscription in Google Analytics
+            if (typeof (window as any).gtag !== 'undefined') {
+                (window as any).gtag('event', 'newsletter_signup', {
+                    event_category: 'engagement',
+                    event_label: 'newsletter_subscription'
+                });
+            }
     } catch (error) {
         console.error('Newsletter signup error:', error);
-        showNewsletterMessage(messageDiv, 'Hubo un error al suscribirte. Por favor, inténtalo de nuevo.', 'error');
+        showProfessionalSuccessNotification('Hubo un error al suscribirte. Por favor, inténtalo de nuevo.', 'error');
     } finally {
         // Reset button state
         if (btnText && btnLoading) {
@@ -3049,8 +3359,13 @@ const createSubscriptionBanner = () => {
 
     // Setup sticky booking CTA
     (window as any).setupStickyBooking = () => {
+        console.log('🔧 Setting up sticky booking CTA...');
         const stickyCTA = document.getElementById('sticky-booking-cta');
-        if (!stickyCTA) return;
+        if (!stickyCTA) {
+            console.error('❌ Sticky CTA element not found!');
+            return;
+        }
+        console.log('✅ Sticky CTA element found:', stickyCTA);
 
         const closeBtn = stickyCTA.querySelector('.sticky-close-btn');
         const bookingBtn = stickyCTA.querySelector('.sticky-booking-btn');
@@ -3112,14 +3427,14 @@ const createSubscriptionBanner = () => {
             const email = emailInput?.value.trim();
             
             if (!email) {
-                showStickyMessage(messageDiv, 'Por favor, ingresa tu email', 'error');
+                showProfessionalSuccessNotification('Por favor, ingresa tu email', 'error');
                 return;
             }
             
             // Validate email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                showStickyMessage(messageDiv, 'Por favor, ingresa un email válido', 'error');
+                showProfessionalSuccessNotification('Por favor, ingresa un email válido', 'error');
                 return;
             }
             
@@ -3131,7 +3446,7 @@ const createSubscriptionBanner = () => {
                 </svg>
                 Enviando...
             `;
-            subscribeBtn.disabled = true;
+                (subscribeBtn as HTMLButtonElement).disabled = true;
             
             try {
                 // Store subscription locally first
@@ -3139,7 +3454,7 @@ const createSubscriptionBanner = () => {
                 const existingSubscription = subscriptions.find((sub: any) => sub.email === email);
                 
                 if (existingSubscription) {
-                    showStickyMessage(messageDiv, '¡Ya estás suscrito! Revisa tu email para tu descuento.', 'success');
+                    showProfessionalSuccessNotification('¡Ya estás suscrito! Revisa tu email para tu descuento.', 'success');
                     return;
                 }
                 
@@ -3155,8 +3470,19 @@ const createSubscriptionBanner = () => {
                 // Try to send welcome email with 10% discount using Resend API
                 try {
                     // Check if API key is properly configured
-                    if (!RESEND_API_KEY || RESEND_API_KEY === 're_Ui5ch7sQ_PsXuHSjHuXQWNKnzwRJP2ugV') {
-                        console.warn('Using fallback API key - consider setting up environment variable');
+                    console.log('🔑 API Key Debug (Sticky):', {
+                        hasApiKey: !!RESEND_API_KEY,
+                        keyLength: RESEND_API_KEY ? RESEND_API_KEY.length : 0,
+                        keyPrefix: RESEND_API_KEY ? RESEND_API_KEY.substring(0, 10) + '...' : 'none',
+                        environment: (import.meta as any).env?.MODE,
+                    });
+                    
+                    console.log('📧 Sending sticky email to:', email);
+                    console.log('🌐 API URL:', RESEND_API_URL);
+                    
+                    if (!RESEND_API_KEY) {
+                        console.warn('❌ Resend API key not configured - skipping email sending');
+                        throw new Error('API key not configured');
                     }
                     
                     // Create AbortController for timeout
@@ -3279,7 +3605,7 @@ const createSubscriptionBanner = () => {
                     }
                     
                     // Show success message
-                    showStickyMessage(messageDiv, '¡Perfecto! Te hemos enviado tu descuento del 10% por email. Revisa tu bandeja de entrada. 🎉', 'success');
+                    showProfessionalSuccessNotification('¡Perfecto! Te hemos enviado tu descuento del 10% por email. Revisa tu bandeja de entrada. 🎉', 'success');
                     emailInput.value = '';
                     
                     // Hide sticky CTA after successful subscription
@@ -3301,7 +3627,7 @@ const createSubscriptionBanner = () => {
                     }
                     
                     // Still show success since we saved locally
-                    showStickyMessage(messageDiv, '¡Perfecto! Te hemos enviado tu descuento del 10% por email. Revisa tu bandeja de entrada. 🎉', 'success');
+                    showProfessionalSuccessNotification('¡Perfecto! Te hemos enviado tu descuento del 10% por email. Revisa tu bandeja de entrada. 🎉', 'success');
                     emailInput.value = '';
                     
                     // Hide sticky CTA after successful subscription
@@ -3315,26 +3641,79 @@ const createSubscriptionBanner = () => {
                 
             } catch (error) {
                 console.error('Sticky subscription error:', error);
-                showStickyMessage(messageDiv, 'Hubo un error al enviar tu descuento. Por favor, inténtalo de nuevo.', 'error');
+                showProfessionalSuccessNotification('Hubo un error al enviar tu descuento. Por favor, inténtalo de nuevo.', 'error');
             } finally {
                 // Restore button state
                 subscribeBtn.innerHTML = originalText;
-                subscribeBtn.disabled = false;
+                (subscribeBtn as HTMLButtonElement).disabled = false;
             }
         });
         
         // Allow Enter key to submit
         emailInput?.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                subscribeBtn?.click();
+                (subscribeBtn as HTMLButtonElement)?.click();
             }
         });
 
         // Track scroll events
         window.addEventListener('scroll', toggleStickyCTA);
         
+        // Show sticky bar immediately on page load (if not closed)
+        setTimeout(() => {
+            // Check if user closed it in this session or already subscribed
+            if (sessionStorage.getItem('sticky-booking-closed') === 'true' || localStorage.getItem('sticky-subscribed') === 'true') {
+                console.log('🚫 Sticky bar not shown - user closed it or already subscribed');
+                return;
+            }
+            
+            console.log('🕐 Showing sticky bar immediately');
+            stickyCTA.style.transform = 'translateY(0)';
+            stickyCTA.style.opacity = '1';
+            isVisible = true;
+        }, 2000); // Show after 2 seconds
+        
         // Initial check
         toggleStickyCTA();
+        
+        // Global functions for testing
+        (window as any).showStickyBar = () => {
+            stickyCTA.style.transform = 'translateY(0)';
+            stickyCTA.style.opacity = '1';
+            isVisible = true;
+            console.log('✅ Sticky bar manually shown');
+        };
+        
+        // Show sticky bar immediately on page load for testing
+        (window as any).showStickyBar();
+        
+        (window as any).hideStickyBar = () => {
+            stickyCTA.style.transform = 'translateY(100%)';
+            stickyCTA.style.opacity = '0';
+            isVisible = false;
+            console.log('❌ Sticky bar manually hidden');
+        };
+        
+        (window as any).clearStickyBarState = () => {
+            localStorage.removeItem('sticky-cta-closed');
+            localStorage.removeItem('sticky-subscribed');
+            localStorage.removeItem('newsletter_subscriptions');
+            localStorage.removeItem('newsletter_subscribers');
+            console.log('🧹 Sticky bar state cleared');
+        };
+        
+        (window as any).checkStickyBarStatus = () => {
+            const stickyCTA = document.getElementById('sticky-booking-cta');
+            console.log('🔍 Sticky bar status:', {
+                exists: !!stickyCTA,
+                element: stickyCTA,
+                style: stickyCTA ? {
+                    transform: stickyCTA.style.transform,
+                    opacity: stickyCTA.style.opacity,
+                    display: stickyCTA.style.display
+                } : null
+            });
+        };
     }
 
     // Helper function for sticky messages
