@@ -1,5 +1,9 @@
 const { Resend } = require('resend');
 
+// Debug environment variable
+console.log('RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY);
+console.log('RESEND_API_KEY length:', process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.length : 0);
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 exports.handler = async (event, context) => {
@@ -27,6 +31,21 @@ exports.handler = async (event, context) => {
   }
 
   try {
+    // Check if API key is available
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY environment variable is not set');
+      return {
+        statusCode: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify({ 
+          error: 'Server configuration error', 
+          details: 'API key not configured' 
+        }),
+      };
+    }
+
     const { to, subject, html, from } = JSON.parse(event.body);
 
     if (!to || !subject || !html) {
