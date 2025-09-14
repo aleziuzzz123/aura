@@ -36,7 +36,7 @@ exports.handler = async (event, context) => {
     }
 
     // Resend API configuration
-    const RESEND_API_KEY = 're_MjhBeU1F_Dbmec2tDFNhFEQgGVHDUFB98';
+    const RESEND_API_KEY = process.env.RESEND_API_KEY;
     const RESEND_API_URL = 'https://api.resend.com/emails';
 
     let emailData;
