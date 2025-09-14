@@ -323,6 +323,7 @@ const App = () => {
     main.appendChild(createPricingSection());
     main.appendChild(createAboutSection());
     main.appendChild(createTestimonialsSection());
+    main.appendChild(createFAQSection());
     main.appendChild(createEmailSignupSection());
     main.appendChild(createBookingSection());
     main.appendChild(createContactSection());
@@ -421,7 +422,7 @@ const createHeroSection = () => {
     const section = createElement('section', { className: 'hero', id: 'inicio' });
     const content = createElement('div', { className: 'hero-content container' });
     
-    const h1 = createElement('h1', { innerHTML: 'Depilación Láser Sin Dolor en Cancún<br>Tratamientos Faciales y Masajes Reductivos' });
+    const h1 = createElement('h1', { innerHTML: '¡Piel perfecta, cero dolor!<br>Láser europeo de vanguardia.' });
     
     // Add trust signals
     // Trust signals section removed as requested
@@ -511,8 +512,8 @@ const createGallerySection = () => {
     const container = createElement('div', { className: 'container' });
     
     const header = createElement('div', { className: 'gallery-header' });
-    const h2 = createElement('h2', { textContent: 'Spa de Belleza en Plaza Aura Cancún' });
-    const subtitle = createElement('p', { textContent: 'Descubre nuestro spa de belleza profesional en Cancún con los mejores tratamientos faciales, depilación láser y masajes reductivos' });
+    const h2 = createElement('h2', { textContent: 'Nuestro Espacio' });
+    const subtitle = createElement('p', { textContent: 'Descubre el ambiente relajante y profesional de Heilen Beauty Spa' });
     header.append(h2, subtitle);
     
     const gallery = createElement('div', { className: 'gallery-grid-container' });
@@ -709,7 +710,7 @@ const createGallerySection = () => {
 const createServicesSection = () => {
     const section = createElement('section', { id: 'servicios' });
     const container = createElement('div', { className: 'container' });
-    const h2 = createElement('h2', { textContent: 'Tratamientos de Belleza en Cancún - Depilación Láser, Faciales y Masajes' });
+    const h2 = createElement('h2', { textContent: 'Nuestros Servicios' });
     
     // Add comparison tool header
     const comparisonHeader = createElement('div', { className: 'services-header' });
@@ -888,7 +889,7 @@ const createServicesSection = () => {
 const createPricingSection = () => {
     const section = createElement('section', { id: 'precios' });
     const container = createElement('div', { className: 'container' });
-    const h2 = createElement('h2', { textContent: 'Precios de Tratamientos de Belleza en Cancún - Depilación Láser y Faciales' });
+    const h2 = createElement('h2', { textContent: 'Lista de Precios' });
     const grid = createElement('div', { className: 'pricing-grid' });
     
     const pricingData = {
@@ -1048,16 +1049,13 @@ const createPricingSection = () => {
 const createAboutSection = () => {
     const section = createElement('section', { id: 'sobre-nosotros' });
     const container = createElement('div', { className: 'container' });
-    const h2 = createElement('h2', { textContent: 'Sobre Heilen Beauty Spa - Centro de Belleza en Cancún' });
+    const h2 = createElement('h2', { textContent: 'Sobre Nosotros' });
     const content = createElement('div', { className: 'about-content' });
     
     const textDiv = createElement('div', { className: 'about-text' });
     textDiv.innerHTML = `
-        <h3>Depilación Láser Sin Dolor en Cancún</h3>
-        <p>En Heilen Beauty Spa, ubicado en Plaza Aura Cancún, ofrecemos la mejor depilación láser sin dolor con tecnología europea de vanguardia. Nuestros tratamientos faciales incluyen Hollywood Carbon Peel, HydraFacial y masajes reductivos para modelar tu cuerpo. Somos el spa de belleza más recomendado en Cancún.</p>
-        
-        <h3>Tratamientos Faciales y Corporales en Cancún</h3>
-        <p>Especialistas en tratamientos faciales como Hollywood Carbon Peel, HydraFacial, limpieza facial profunda y maderoterapia facial. También ofrecemos masajes reductivos, cavitación, presoterapia y tratamientos anti-celulitis para lograr los mejores resultados en tu belleza.</p>
+        <h3>Nuestra Misión</h3>
+        <p>Ofrecer una experiencia de bienestar y relajación sin igual a través de servicios de alta calidad, promoviendo un ambiente acogedor que realce la belleza natural con un equipo de profesionales altamente capacitados.</p>
         
         <h3>Nuestros Valores</h3>
         <div class="values-grid">
@@ -1174,8 +1172,8 @@ const createBookingSection = () => {
     const content = createElement('div', { className: 'booking-content' });
     content.innerHTML = `
         <div class="booking-header">
-            <h2>Reservar Cita de Depilación Láser y Tratamientos Faciales en Cancún</h2>
-            <p>Reserva tu cita de forma fácil y rápida. Elige entre nuestros tratamientos de depilación láser, faciales Hollywood Carbon Peel, HydraFacial y masajes reductivos en Cancún.</p>
+            <h2>Reservar Cita Online</h2>
+            <p>Reserva tu cita de forma fácil y rápida. Elige el servicio que más te guste y agenda tu próxima experiencia de bienestar.</p>
         </div>
 
         <div class="booking-options">
@@ -1325,6 +1323,17 @@ const createFooter = () => {
                     <p class="footer-description">
                         Tu oasis de belleza y bienestar en Cancún. Ofrecemos tratamientos de vanguardia con tecnología europea para realzar tu belleza natural.
                     </p>
+                    <!-- SEO Content - Hidden but accessible to search engines -->
+                    <div style="display: none;">
+                        <h4>Servicios de Belleza en Cancún</h4>
+                        <p>Heilen Beauty Spa es el mejor centro de belleza en Cancún, especializado en depilación láser sin dolor, tratamientos faciales Hollywood Carbon Peel, HydraFacial, masajes reductivos, maderoterapia, cavitación y presoterapia. Ubicados en Plaza Aura Cancún, ofrecemos los mejores precios y la tecnología más avanzada para el cuidado de tu piel y cuerpo.</p>
+                        <h4>Depilación Láser en Cancún</h4>
+                        <p>Nuestra depilación láser en Cancún utiliza tecnología europea Philaser para eliminar el vello de forma permanente y sin dolor. Especialistas en depilación láser de piernas, axilas, bikini, facial y corporal. Resultados visibles desde la primera sesión.</p>
+                        <h4>Tratamientos Faciales en Cancún</h4>
+                        <p>Hollywood Carbon Peel, HydraFacial, limpieza facial profunda, maderoterapia facial y radiofrecuencia facial. Los mejores tratamientos faciales en Cancún para rejuvenecer, hidratar y mejorar la textura de tu piel.</p>
+                        <h4>Masajes Reductivos en Cancún</h4>
+                        <p>Masajes reductivos, maderoterapia, cavitación, presoterapia y vacumterapia para modelar tu cuerpo y reducir celulitis. Tratamientos corporales efectivos en Cancún con resultados comprobados.</p>
+                    </div>
                     <div class="footer-social">
                         <a href="https://www.facebook.com/p/heilencolinabeauty-100068728457373" target="_blank" aria-label="Facebook" class="social-link">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -1543,6 +1552,49 @@ const createTestimonialsSection = () => {
     `;
     
     container.append(header, testimonialsGrid);
+    section.appendChild(container);
+    return section;
+};
+
+const createFAQSection = () => {
+    const section = createElement('section', { className: 'faq-section', id: 'faq' });
+    const container = createElement('div', { className: 'container' });
+    
+    const header = createElement('div', { className: 'faq-header' });
+    header.innerHTML = `
+        <h2>Preguntas Frecuentes</h2>
+        <p>Resolvemos las dudas más comunes sobre nuestros tratamientos de belleza en Cancún</p>
+    `;
+    
+    const faqContent = createElement('div', { className: 'faq-content' });
+    faqContent.innerHTML = `
+        <div class="faq-item">
+            <h3>¿La depilación láser duele en Heilen Beauty Spa?</h3>
+            <p>No, nuestra depilación láser en Cancún es completamente sin dolor gracias a la tecnología europea Philaser que utilizamos. Es la mejor depilación láser sin dolor en Cancún.</p>
+        </div>
+        <div class="faq-item">
+            <h3>¿Cuántas sesiones de depilación láser necesito en Cancún?</h3>
+            <p>Para obtener resultados permanentes, recomendamos entre 6-8 sesiones de depilación láser en nuestro spa de Cancún. Cada persona es diferente y nuestros especialistas evaluarán tu caso.</p>
+        </div>
+        <div class="faq-item">
+            <h3>¿Qué es el Hollywood Carbon Peel en Cancún?</h3>
+            <p>El Hollywood Carbon Peel es uno de nuestros tratamientos faciales más populares en Cancún. Elimina impurezas, reduce poros y deja la piel radiante. Es perfecto para preparar la piel antes de eventos especiales.</p>
+        </div>
+        <div class="faq-item">
+            <h3>¿Los masajes reductivos en Cancún realmente funcionan?</h3>
+            <p>Sí, nuestros masajes reductivos en Cancún combinados con maderoterapia y cavitación son muy efectivos para modelar el cuerpo y reducir celulitis. Los resultados son visibles desde la primera sesión.</p>
+        </div>
+        <div class="faq-item">
+            <h3>¿Dónde está ubicado Heilen Beauty Spa en Cancún?</h3>
+            <p>Estamos ubicados en Plaza Aura Cancún, subiendo el elevador del lado derecho, tercer nivel. Es fácil llegar y tenemos estacionamiento disponible para nuestros clientes.</p>
+        </div>
+        <div class="faq-item">
+            <h3>¿Necesito reservar cita para los tratamientos faciales en Cancún?</h3>
+            <p>Sí, recomendamos reservar tu cita con anticipación para asegurar tu horario preferido. Puedes reservar online o contactarnos por WhatsApp al (998) 232-2090.</p>
+        </div>
+    `;
+    
+    container.append(header, faqContent);
     section.appendChild(container);
     return section;
 };

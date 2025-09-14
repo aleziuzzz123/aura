@@ -4,21 +4,32 @@ Allow: /
 # Sitemap
 Sitemap: https://heilenbeautyspa.com/sitemap.xml
 
-# Crawl-delay
+# Allow all search engines to crawl
 Crawl-delay: 1
 
 # Disallow admin areas (if any)
 Disallow: /admin/
 Disallow: /private/
+Disallow: /temp/
 
-# Allow all search engines
-User-agent: Googlebot
-Allow: /
+# Allow important pages
+Allow: /#servicios
+Allow: /#precios
+Allow: /#sobre-nosotros
+Allow: /#reservar-cita
+Allow: /#contacto
+Allow: /#galeria
+Allow: /#testimonios
 
-User-agent: Bingbot
-Allow: /
+# Allow images
+Allow: /logo/
+Allow: /images/
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
 
-User-agent: Slurp
-Allow: /
-
-
+# Allow CSS and JS
+Allow: /*.css
+Allow: /*.js
