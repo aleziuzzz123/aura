@@ -421,7 +421,7 @@ const createHeroSection = () => {
     const section = createElement('section', { className: 'hero', id: 'inicio' });
     const content = createElement('div', { className: 'hero-content container' });
     
-    const h1 = createElement('h1', { innerHTML: '¡Piel perfecta, cero dolor!<br>Láser europeo de vanguardia.' });
+    const h1 = createElement('h1', { innerHTML: 'Depilación Láser Sin Dolor en Cancún<br>Tratamientos Faciales y Masajes Reductivos' });
     
     // Add trust signals
     // Trust signals section removed as requested
@@ -511,8 +511,8 @@ const createGallerySection = () => {
     const container = createElement('div', { className: 'container' });
     
     const header = createElement('div', { className: 'gallery-header' });
-    const h2 = createElement('h2', { textContent: 'Nuestro Espacio' });
-    const subtitle = createElement('p', { textContent: 'Descubre el ambiente relajante y profesional de Heilen Beauty Spa' });
+    const h2 = createElement('h2', { textContent: 'Spa de Belleza en Plaza Aura Cancún' });
+    const subtitle = createElement('p', { textContent: 'Descubre nuestro spa de belleza profesional en Cancún con los mejores tratamientos faciales, depilación láser y masajes reductivos' });
     header.append(h2, subtitle);
     
     const gallery = createElement('div', { className: 'gallery-grid-container' });
@@ -709,7 +709,7 @@ const createGallerySection = () => {
 const createServicesSection = () => {
     const section = createElement('section', { id: 'servicios' });
     const container = createElement('div', { className: 'container' });
-    const h2 = createElement('h2', { textContent: 'Nuestros Servicios' });
+    const h2 = createElement('h2', { textContent: 'Tratamientos de Belleza en Cancún - Depilación Láser, Faciales y Masajes' });
     
     // Add comparison tool header
     const comparisonHeader = createElement('div', { className: 'services-header' });
@@ -888,7 +888,7 @@ const createServicesSection = () => {
 const createPricingSection = () => {
     const section = createElement('section', { id: 'precios' });
     const container = createElement('div', { className: 'container' });
-    const h2 = createElement('h2', { textContent: 'Lista de Precios' });
+    const h2 = createElement('h2', { textContent: 'Precios de Tratamientos de Belleza en Cancún - Depilación Láser y Faciales' });
     const grid = createElement('div', { className: 'pricing-grid' });
     
     const pricingData = {
@@ -1048,13 +1048,16 @@ const createPricingSection = () => {
 const createAboutSection = () => {
     const section = createElement('section', { id: 'sobre-nosotros' });
     const container = createElement('div', { className: 'container' });
-    const h2 = createElement('h2', { textContent: 'Sobre Nosotros' });
+    const h2 = createElement('h2', { textContent: 'Sobre Heilen Beauty Spa - Centro de Belleza en Cancún' });
     const content = createElement('div', { className: 'about-content' });
     
     const textDiv = createElement('div', { className: 'about-text' });
     textDiv.innerHTML = `
-        <h3>Nuestra Misión</h3>
-        <p>Ofrecer una experiencia de bienestar y relajación sin igual a través de servicios de alta calidad, promoviendo un ambiente acogedor que realce la belleza natural con un equipo de profesionales altamente capacitados.</p>
+        <h3>Depilación Láser Sin Dolor en Cancún</h3>
+        <p>En Heilen Beauty Spa, ubicado en Plaza Aura Cancún, ofrecemos la mejor depilación láser sin dolor con tecnología europea de vanguardia. Nuestros tratamientos faciales incluyen Hollywood Carbon Peel, HydraFacial y masajes reductivos para modelar tu cuerpo. Somos el spa de belleza más recomendado en Cancún.</p>
+        
+        <h3>Tratamientos Faciales y Corporales en Cancún</h3>
+        <p>Especialistas en tratamientos faciales como Hollywood Carbon Peel, HydraFacial, limpieza facial profunda y maderoterapia facial. También ofrecemos masajes reductivos, cavitación, presoterapia y tratamientos anti-celulitis para lograr los mejores resultados en tu belleza.</p>
         
         <h3>Nuestros Valores</h3>
         <div class="values-grid">
@@ -1171,8 +1174,8 @@ const createBookingSection = () => {
     const content = createElement('div', { className: 'booking-content' });
     content.innerHTML = `
         <div class="booking-header">
-            <h2>Reservar Cita Online</h2>
-            <p>Reserva tu cita de forma fácil y rápida. Elige el servicio que más te guste y agenda tu próxima experiencia de bienestar.</p>
+            <h2>Reservar Cita de Depilación Láser y Tratamientos Faciales en Cancún</h2>
+            <p>Reserva tu cita de forma fácil y rápida. Elige entre nuestros tratamientos de depilación láser, faciales Hollywood Carbon Peel, HydraFacial y masajes reductivos en Cancún.</p>
         </div>
 
         <div class="booking-options">
@@ -2876,9 +2879,9 @@ const handleNewsletterSignup = async (e: Event) => {
                 },
                 body: JSON.stringify({
                     to: email,
-                    subject: '🎉 ¡Bienvenida! Tu 10% de descuento te espera',
+                subject: '🎉 ¡Bienvenida! Tu 10% de descuento te espera',
                     addToAudience: true,
-                    html: `
+                html: `
                         <!DOCTYPE html>
                         <html>
                         <head>
@@ -2899,8 +2902,8 @@ const handleNewsletterSignup = async (e: Event) => {
                                         </div>
                                         <h1 style="color: white; margin: 0; font-size: 32px; font-weight: 300; letter-spacing: 1px;">¡Bienvenida a Heilen Beauty Spa!</h1>
                                         <p style="color: rgba(255,255,255,0.9); margin: 15px 0 0 0; font-size: 18px; font-weight: 300;">Tu oasis de belleza y bienestar en Cancún</p>
-                                    </div>
-                                    
+                                </div>
+                                
                                     <!-- Welcome Message -->
                                     <div style="padding: 40px 30px 30px; text-align: center; background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 100%);">
                                         <h2 style="color: #a0816e; margin: 0 0 20px 0; font-size: 24px; font-weight: 400;">¡Gracias por unirte a nuestra comunidad!</h2>
@@ -2914,11 +2917,11 @@ const handleNewsletterSignup = async (e: Event) => {
                                             <div style="background: white; padding: 20px; border-radius: 10px; margin: 15px 0;">
                                                 <p style="margin: 0 0 10px 0; color: #666; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Código de descuento</p>
                                                 <p style="margin: 0; font-size: 28px; font-weight: bold; color: #a0816e; letter-spacing: 3px; font-family: 'Courier New', monospace;">DESCUENTO10</p>
-                                            </div>
-                                            <p style="margin: 15px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px;">Válido para tu primera visita</p>
                                         </div>
+                                            <p style="margin: 15px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px;">Válido para tu primera visita</p>
                                     </div>
-                                    
+                                </div>
+                                
                                     <!-- Benefits Section -->
                                     <div style="padding: 0 30px 30px;">
                                         <h3 style="color: #a0816e; margin: 0 0 20px 0; font-size: 20px; text-align: center; font-weight: 400;">Lo que recibirás como miembro</h3>
@@ -2965,10 +2968,10 @@ const handleNewsletterSignup = async (e: Event) => {
                                             <p style="margin: 8px 0; color: #666; font-size: 14px;">Subiendo el elevador del lado derecho, tercer nivel</p>
                                             <p style="margin: 8px 0; color: #a0816e; font-size: 16px; font-weight: 500;">📞 (998) 232-2090</p>
                                             <p style="margin: 8px 0; color: #666; font-size: 14px;">🕒 Lun-Sáb: 10:00 AM - 6:00 PM</p>
-                                        </div>
                                     </div>
-                                    
-                                    <!-- Footer -->
+                                </div>
+                                
+                                <!-- Footer -->
                                     <div style="background: #2c2c2c; padding: 25px; text-align: center;">
                                         <p style="font-size: 14px; color: #ccc; margin: 0 0 10px 0;">
                                             <strong style="color: #a0816e;">Heilen Beauty Spa</strong><br>
@@ -2979,10 +2982,10 @@ const handleNewsletterSignup = async (e: Event) => {
                                         </p>
                                         <p style="font-size: 12px; color: #999; margin: 0;">
                                             Si no deseas recibir más emails, puedes <a href="#" style="color: #999; text-decoration: underline;">darte de baja aquí</a>
-                                        </p>
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
+                        </div>
                         </body>
                         </html>
                     `,
@@ -2995,7 +2998,7 @@ const handleNewsletterSignup = async (e: Event) => {
                 console.error('❌ Email API Error:', errorData);
                 throw new Error(`API request failed: ${response.status}`);
             }
-            
+
             const result = await response.json();
             console.log('✅ Email sent successfully:', result);
             
@@ -3014,7 +3017,7 @@ const handleNewsletterSignup = async (e: Event) => {
                 event_category: 'engagement',
                 event_label: 'newsletter_subscription'
             });
-        }
+            }
     } catch (error) {
         console.error('Newsletter signup error:', error);
         showNewsletterMessage(messageDiv, 'Error al suscribirse. Inténtalo de nuevo.', 'error');
