@@ -3624,6 +3624,12 @@ const createSubscriptionBanner = () => {
                 return;
             }
             
+            // Check if user has already subscribed
+            if (localStorage.getItem('sticky-subscribed') === 'true') {
+                console.log('🚫 User already subscribed - not showing sticky bar');
+                return;
+            }
+            
             const heroBottom = heroSection.getBoundingClientRect().bottom;
             const shouldShow = heroBottom < 0 && !isVisible;
             const shouldHide = heroBottom >= 0 && isVisible;
