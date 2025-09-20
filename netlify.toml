@@ -5,6 +5,13 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Allow specific HTML files to be served directly
+[[redirects]]
+  from = "/jegodigital-review.html"
+  to = "/jegodigital-review.html"
+  status = 200
+
+# Redirect all other routes to index.html for SPA
 [[redirects]]
   from = "/*"
   to = "/index.html"
